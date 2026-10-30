@@ -23,7 +23,7 @@
   <p>Էջը չի գտնվել:</p>
   <p>Page not found.</p>
   <p>Страница не найдена.</p>
-  <nav>{% for l in langs %}<a href="/{{ l.code }}/">{{ l.label }}</a>{% endfor %}</nav>
+  <nav>{% for l in langs %}<a href="{{ base_path }}/{{ l.code }}/">{{ l.label }}</a>{% endfor %}</nav>
 </main>
 </body>
 </html>

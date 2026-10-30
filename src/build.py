@@ -32,6 +32,7 @@ site = jload('site.json')
 logo = jload('logo_paths.json')
 CLEAN = bool(cfg.get('clean_urls'))
 SITE_URL = (cfg.get('site_url') or '').rstrip('/')
+BASE_PATH = '/' + (cfg.get('base_path') or '').strip('/') if (cfg.get('base_path') or '').strip('/') else ''   # sub-folder hosting, e.g. GitHub project pages
 
 # ------------------------------------------------------------------ string tables
 S = {'hy': jload('i18n', 'hy.json'), 'en': {}, 'ru': {}}
@@ -401,7 +402,7 @@ def build_root():
                       logo_paths=logo['paths'], clean_urls=CLEAN)
     open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf8', newline='\n').write(html)
     open(os.path.join(ROOT, '404.html'), 'w', encoding='utf8', newline='\n').write(env.get_template('404.html').render(
-        langs=[{'code': l, 'label': LANG_LABEL[l]} for l in LANGS]))
+        langs=[{'code': l, 'label': LANG_LABEL[l]} for l in LANGS], base_path=BASE_PATH))
     if SITE_URL:
         urls = [SITE_URL + '/']
         for l in LANGS:
