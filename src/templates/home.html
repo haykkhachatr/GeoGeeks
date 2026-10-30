@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block pins %}
+<nav class="pins" data-pins aria-label="{{ x('home.where') }}">
+  {%- for p in pins %}<a class="pin" href="{{ p.href }}" data-pin="{{ p.key }}" aria-label="{{ p.label }} — {{ p.title }}"><i class="pin-dot"></i><span class="pin-l mono">{{ p.label }}</span></a>{% endfor %}
+</nav>
+{% endblock %}
+{% block main %}
+{{ subnav([('top', x('home.overview')), ('services', x('home.what')), ('projects', t('ui.nav.projects')), ('platforms', x('home.platforms')), ('partners', t('ui.about.partners'))], x('home.overview')) }}
+
+{#- ================= HERO — the map assembles itself ================= -#}
+<section class="sec hero" id="top" data-map="hero" data-hdr="on-dark">
+  <div class="wrap hero-in">
+    <p class="kicker mono hero-kick"><i class="pulse"></i>{{ x('home.kicker') }}</p>
+    <h1 class="hero-h" data-split="words" aria-label="{{ t('ui.h1.home') }}">{{ hero_desc }}</h1>
+    <div class="hero-cta">
+      <a class="btn" href="{{ href('services') }}"><span class="btn-t">{{ t('ui.nav.services') }}</span>{{ arrow() }}</a>
+      <a class="btn btn-ghost" href="{{ href('projects') }}"><span class="btn-t">{{ t('ui.nav.projects') }}</span>{{ arrow() }}</a>
+    </div>
+  </div>
+  <div class="hero-cue mono" aria-hidden="true"><span>{{ x('scroll') }}</span><i></i></div>
+  <div class="wrap hero-meta">
+    <dl class="hero-facts">
+      {%- for s in hero_facts %}
+      <div><dt class="mono">{{ s.label }}</dt><dd>{{ s.value }}</dd></div>
+      {%- endfor %}
+    </dl>
+    <p class="hud mono" aria-hidden="true">{{ x('cloud.cap') }}</p>
+  </div>
+</section>
+
+{#- ================= ABOUT — one big statement, revealed by scrolling ================= -#}
+<section class="sec say say-about" id="about" data-map="about" data-hdr="on-dark">
+  <div class="say-st">
+    <div class="wrap say-in">
+      <p class="say-k mono"><b>01</b>{{ t('ui.nav.about') }}</p>
+      <p class="say-t" data-scrub>{{ t('ui.about.intro') }}</p>
+      <a class="link-arrow say-link" href="{{ href('about') }}">{{ t('ui.about.heading') }}{{ arrow() }}</a>
+    </div>
+  </div>
+</section>
+
+{#- ================= SERVICES — three statements, the map changes with each ================= -#}
+<div id="services">
+  {%- for s in svcs %}
+  <section class="sec say say-svc" data-map="{{ s.key }}"{% if s.key == 'hydro' %} data-flood{% endif %} data-i="{{ loop.index0 }}" data-hdr="on-dark">
+    <div class="say-st">
+      <div class="wrap say-in">
+        <p class="say-k mono"><b>0{{ loop.index }}</b> / 0{{ svcs|length }} — {{ s.card }}</p>
+        <p class="say-t" data-scrub>{{ s.desc }}</p>
+        <ul class="say-subs">{% for sub in s.subs %}<li>{{ sub.label }}</li>{% endfor %}</ul>
+        <a class="link-arrow say-link" href="{{ href('services') }}#{{ s.key }}">{{ t('ui.services.more') }}{{ arrow() }}</a>
+      </div>
+    </div>
+  </section>
+  {%- endfor %}
+</div>
+
+{#- ================= PROJECTS — a camera flight over the real places, one card per marker ================= -#}
+<section class="sec pstory" id="projects" style="--n:{{ pins|length }}" data-map="overview" data-hdr="on-dark" data-pstory>
+  <div class="pstory-st">
+    <div class="wrap pstory-in">
+      <div class="pstory-head">
+        <p class="say-k mono"><b>02</b>{{ x('home.where') }}</p>
+        <h2 class="h2 pstory-h">{{ x('home.whereT') }}</h2>
+        <a class="link-arrow" href="{{ href('projects') }}">{{ t('ui.nav.projects') }} ({{ projects|length }}){{ arrow() }}</a>
+      </div>
+      <div class="pstory-cards">
+        {%- for p in pins %}
+        <a class="pcard glass{% if loop.first %} is-on{% endif %}" href="{{ p.href }}" data-pcard="{{ p.key }}">
+          <span class="pcard-img"><img src="{{ root }}assets/img/projects/{{ p.slug }}-card.webp" alt="" loading="lazy" decoding="async"></span>
+          <span class="pcard-b">
+            <span class="pcard-meta mono"><b>{{ p.label }}</b><span>{{ p.year }}</span></span>
+            <h3 class="pcard-t">{{ p.title }}</h3>
+            <span class="pcard-c">{{ p.client }}</span>
+            <span class="pcard-cta">{{ t('ui.home.openProject') }}{{ arrow() }}</span>
+          </span>
+        </a>
+        {%- endfor %}
+      </div>
+      <div class="pst-foot mono" aria-hidden="true"><span><b data-pst-n>01</b> / 0{{ pins|length }}</span><ol class="pst-dots">{% for p in pins %}<li{% if loop.first %} class="is-on"{% endif %}></li>{% endfor %}</ol></div>
+    </div>
+  </div>
+</section>
+
+{#- ================= PLATFORMS ================= -#}
+<section class="sec hplat" id="platforms" data-map="plat" data-hdr="on-dark">
+  <div class="wrap">
+    <div class="sh"><span class="sh-l mono"><b>03</b>{{ x('home.platforms') }}</span></div>
+    <div class="plat-grid">
+      {%- for p in products %}
+      <article class="plat glass" data-fx="fade">
+        <a class="plat-shot" href="{{ p.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ p.title }}" data-tilt>
+          <span class="plat-bar" aria-hidden="true"><i></i><i></i><i></i><em class="mono">{{ p.host }}</em></span>
+          <img src="{{ root }}assets/img/products/{{ p.key }}.webp" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="plat-text">
+          <span class="plat-n mono">{{ '%02d' % loop.index }}</span>
+          <h3 class="h3">{{ p.title }}</h3>
+          <p class="lede">{{ p.desc }}</p>
+          <a class="btn" href="{{ p.url }}" target="_blank" rel="noopener noreferrer"><span class="btn-t">{{ p.cta }}</span>{{ arrow() }}</a>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{#- ================= NUMBERS + PARTNERS ================= -#}
+<section class="sec hpart" id="partners" data-map="numbers" data-hdr="on-dark">
+  <div class="wrap">
+    <div class="sh"><span class="sh-l mono"><b>04</b>{{ t('ui.about.partners') }}</span></div>
+    <dl class="stats">
+      {%- for s in stats %}
+      <div class="stat"><dt class="mono">{{ s.label }}</dt><dd><span data-count="{{ s.value }}"{% if s.get('plain') %} data-plain{% endif %}>{{ s.value }}</span></dd></div>
+      {%- endfor %}
+    </dl>
+    <ul class="plogos">
+      {%- for p in partners %}<li><a href="{{ p.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ p.name }}" title="{{ p.name }}"><img src="{{ root }}{{ p.src }}" alt="" loading="lazy" decoding="async"></a></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block pins %}
+<nav class="pins" data-pins aria-label="{{ x('home.where') }}">
+  {%- for p in pins %}<a class="pin" href="{{ p.href }}" data-pin="{{ p.key }}" aria-label="{{ p.label }} — {{ p.title }}"><i class="pin-dot"></i><span class="pin-l mono">{{ p.label }}</span></a>{% endfor %}
+</nav>
+{% endblock %}
+{% block main %}
+{#- a map with a side panel: the map stays on the left and flies to a place when you point at its project -#}
+<section class="sec mapapp" id="top" data-map="proj" data-hdr="on-dark">
+  <div class="wrap mapapp-in">
+    <header class="mapapp-l">
+      <p class="kicker mono"><i class="pulse"></i>{{ projects|length }} · {{ sectors|length }}</p>
+      <h1 class="mega mapapp-h" style="--n:{{ t('ui.nav.projects')|length }}" data-split="fade" aria-label="{{ t('ui.h1.projects') }}">{{ t('ui.nav.projects') }}</h1>
+      <p class="mapapp-legend mono"><i class="pin-dot" aria-hidden="true"></i>{{ x('home.where') }}</p>
+    </header>
+    <div class="mapapp-r glass">
+      <div class="fchips" role="group" aria-label="{{ t('ui.nav.projects') }}" data-filters>
+        <button type="button" class="fp is-on" data-f="all" aria-pressed="true">{{ x('all') }}</button>
+        {%- for s in sectors if s.projs %}<button type="button" class="fp" data-f="{{ s.key }}" aria-pressed="false">{{ s.title }}</button>{% endfor %}
+      </div>
+      <ol class="plx" data-plist>
+        {%- for p in projects %}
+        <li class="plx-li">
+          <a class="prx" href="{{ p.href }}" data-sector="{{ p.sector_key }}"{% if p.pin %} data-pin="{{ p.pin }}"{% endif %}>
+            <span class="prx-img"><img src="{{ root }}assets/img/projects/{{ p.slug }}-card.webp" alt="" loading="lazy" decoding="async"></span>
+            <span class="prx-b">
+              <span class="prx-meta mono"><b>{{ p.year }}</b><span>{{ p.sector_title }}</span>{% if p.pin %}<i class="pin-dot prx-pin" aria-hidden="true"></i>{% endif %}</span>
+              <h2 class="prx-t">{{ p.title }}</h2>
+              <span class="prx-c">{{ p.client }}</span>
+            </span>
+            <span class="prx-a">{{ arrow() }}</span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ol>
+      <nav class="osec" aria-label="{{ t('ui.nav.projects') }}">
+        {%- for s in sectors %}<a class="chip-b" href="{{ s.href }}">{{ s.title }}<sup>{{ s.count }}</sup></a>{% endfor %}
+      </nav>
+    </div>
+  </div>
+</section>
+{% endblock %}

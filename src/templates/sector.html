@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block main %}
+<section class="sec mapapp" id="top" data-map="projQuiet" data-hdr="on-dark">
+  <div class="wrap mapapp-in">
+    <header class="mapapp-l">
+      <a class="back" href="{{ href('projects') }}">{{ arrow_back() }}<span>{{ back_label }}</span></a>
+      <p class="kicker mono">{{ t('ui.nav.projects') }} · {{ '%02d' % sector.idx }} / {{ '%02d' % sectors|length }} · {{ sector.count_label }}</p>
+      <h1 class="h1 sec-title" data-split="fade">{{ sector.title }}</h1>
+    </header>
+    <div class="mapapp-r glass">
+      <figure class="sec-fig"><img src="{{ root }}assets/img/sectors/{{ sector.key }}.webp" alt="" decoding="async"></figure>
+      {%- if sector.projs %}
+      <ol class="plx">
+        {%- for p in sector.projs %}
+        <li class="plx-li">
+          <a class="prx" href="{{ p.href }}">
+            <span class="prx-img"><img src="{{ root }}assets/img/projects/{{ p.slug }}-card.webp" alt="" loading="lazy" decoding="async"></span>
+            <span class="prx-b">
+              <span class="prx-meta mono"><b>{{ p.year }}</b><span>{{ p.duration }}</span></span>
+              <h2 class="prx-t">{{ p.title }}</h2>
+              <span class="prx-c">{{ t('ui.project.client') }}{{ p.client }}</span>
+            </span>
+            <span class="prx-a">{{ arrow() }}</span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ol>
+      {%- else %}
+      <p class="lede sec-empty">{{ t('ui.sector.empty') }}</p>
+      {%- endif %}
+      <nav class="osec" aria-label="{{ t('ui.nav.projects') }}">
+        {%- for s in sectors if s.key != sector.key %}<a class="chip-b" href="{{ s.href }}">{{ s.title }}</a>{% endfor %}
+      </nav>
+    </div>
+  </div>
+</section>
+{% endblock %}

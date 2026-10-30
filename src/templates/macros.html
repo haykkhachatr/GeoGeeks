@@ -1,0 +1,24 @@
+{%- macro roll(text, cls='') -%}
+<span class="roll {{ cls }}"><span class="sr-only">{{ text }}</span><span class="roll-in" aria-hidden="true">{% for ch in text %}{% if ch == ' ' %}<span class="ch sp"> </span>{% else %}<span class="ch" style="--i:{{ loop.index0 }}"><span>{{ ch }}</span><span>{{ ch }}</span></span>{% endif %}{% endfor %}</span></span>
+{%- endmacro -%}
+
+{%- macro arrow() -%}<svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>{%- endmacro -%}
+
+{%- macro arrow_back() -%}<svg class="arw arw-b" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>{%- endmacro -%}
+
+{%- macro logo(cls='') -%}
+<svg class="logo {{ cls }}" viewBox="0 0 1181 1181" aria-hidden="true" focusable="false"><path class="f-y" fill="#f7db5d" d="{{ logo_paths.yellow }}"/><path class="f-g" fill="#605c5c" d="{{ logo_paths.graphite }}"/><path class="f-t" fill="#0c8495" d="{{ logo_paths.teal }}"/><path class="f-n" fill="#00a97a" d="{{ logo_paths.green }}"/></svg>
+{%- endmacro -%}
+
+{#- a split-able heading: words are wrapped by JS (data-split) -#}
+{%- macro chips(items) -%}
+<ul class="chips">{% for c in items %}<li>{{ c }}</li>{% endfor %}</ul>
+{%- endmacro -%}
+
+{#- sticky sub-navigation (esri.com/what-is-gis): the sections of the current page -#}
+{%- macro subnav(items, label) -%}
+<nav class="subnav" aria-label="{{ label }}" data-subnav>
+  {%- for id, text in items %}<a href="#{{ id }}"{% if loop.first %} class="is-on"{% endif %}>{{ text }}</a>{% endfor %}
+  <i class="subnav-bar" data-subnav-bar></i>
+</nav>
+{%- endmacro -%}

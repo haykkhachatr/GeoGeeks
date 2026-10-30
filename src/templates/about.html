@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block main %}
+{{ subnav([('top', x('home.overview')), ('vision', t('ui.nav.about')), ('team', t('ui.about.team')), ('partners', t('ui.about.partners'))], x('home.overview')) }}
+
+{#- giant counting years over the map (after jenamdvacetpet.cz) -#}
+<section class="sec ahero" id="top" data-map="aboutHero" data-hdr="on-dark">
+  <div class="wrap ahero-in">
+    <p class="kicker mono"><i class="pulse"></i>{{ t('ui.nav.about') }}</p>
+    <h1 class="h1 ab-h" data-split="words" data-hl="2021">{{ about_heading|safe }}</h1>
+  </div>
+  <div class="acount" aria-hidden="true"><span class="acount-n" data-year-count>2021</span><span class="acount-cap mono">{{ x('about.years') }}</span></div>
+</section>
+
+{#- serif statement, words light up as you read (after theoryvc.com) -#}
+<section class="sec avision" id="vision" data-map="aboutQuiet" data-hdr="on-dark">
+  <div class="wrap avision-in">
+    <p class="mono avision-k"><b>01</b>{{ t('ui.nav.about') }}</p>
+    <p class="avision-t" data-scrub>{{ t('ui.about.intro') }}</p>
+  </div>
+</section>
+
+<section class="sec ateam" id="team" data-map="aboutQuiet" data-hdr="on-dark">
+  <div class="wrap">
+    <div class="sh"><span class="sh-l mono"><b>02</b>{{ t('ui.about.team') }}</span></div>
+    <div class="tgrid">
+      {%- for m in team %}
+      <article class="tcard glass" data-fx="fade">
+        <div class="tcard-img"><img src="{{ root }}assets/img/team/{{ m.key }}.webp" alt="{{ m.name }}" loading="lazy" decoding="async"></div>
+        <div class="tcard-b">
+          <h2 class="tcard-n">{{ m.name }}</h2>
+          <p class="tcard-r mono">{{ m.role }}</p>
+          {%- if m.linkedin %}<a class="tcard-l mono" href="{{ m.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — {{ m.name }}">LinkedIn <span aria-hidden="true">↗</span></a>{% endif %}
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{#- partners as a brand-book style index (after ojiholdings brandbook) -#}
+<section class="sec apart" id="partners" data-map="aboutQuiet" data-hdr="on-dark">
+  <div class="wrap">
+    <div class="sh"><span class="sh-l mono"><b>03</b>{{ t('ui.about.partners') }}</span></div>
+    <ul class="pgrid-l">
+      {%- for p in partners %}
+      <li>
+        <a class="ptile" href="{{ p.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ p.name }}">
+          <span class="ptile-no mono">{{ '%02d' % loop.index }}</span>
+          <span class="ptile-img"><img src="{{ root }}{{ p.src }}" alt="" loading="lazy" decoding="async"></span>
+          <span class="ptile-n">{{ p.name }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

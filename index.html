@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-page="root">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GeoGeeks</title>
+<meta name="description" content="GeoGeeks — GIS · Hydrology · Flood modelling · ԱՏՀ · Հիդրոլոգիա · ГИС · Гидрология">
+<meta name="theme-color" content="#04161a">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="page-root">
+<main class="root">
+  <div class="root-bg" aria-hidden="true"></div>
+  <div class="root-in">
+    <svg class="logo root-logo" viewBox="0 0 1181 1181" aria-hidden="true" focusable="false"><path class="f-y" fill="#f7db5d" d="M473 136L132 477L132 479L566 812L570 813L475 136Z"/><path class="f-g" fill="#605c5c" d="M497 112L550 490L948 377L948 374L630 56L622 50L612 45L601 42L582 42L571 45L561 50L552 57Z"/><path class="f-t" fill="#0c8495" d="M973 399L554 519L598 836L779 975L781 975L1128 628L1137 613L1140 604L1141 585L1137 569L1131 558Z"/><path class="f-n" fill="#00a97a" d="M52 558L46 569L43 579L42 596L46 613L56 629L559 1131L577 1139L590 1141L603 1140L613 1137L624 1131L760 996L759 992L115 498L111 498Z"/></svg>
+    <h1 class="root-h mono">GeoGeeks</h1>
+    <nav class="root-nav" aria-label="Language">
+      <a class="root-a" href="hy/index.html" hreflang="hy" lang="hy" data-lang="hy"><span class="root-c mono">ՀԱՅ</span><span class="root-n">Հայերեն</span><svg class="arw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a>
+      <a class="root-a" href="en/index.html" hreflang="en" lang="en" data-lang="en"><span class="root-c mono">ENG</span><span class="root-n">English</span><svg class="arw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a>
+      <a class="root-a" href="ru/index.html" hreflang="ru" lang="ru" data-lang="ru"><span class="root-c mono">РУС</span><span class="root-n">Русский</span><svg class="arw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a>
+    </nav>
+  </div>
+</main>
+<script>
+(function(){
+  var q=location.search;
+  if(/[?&]choose\b/.test(q)) return;
+  var pick=null;
+  try{pick=localStorage.getItem('ggLang');}catch(e){}
+  if(!pick){
+    var nav=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en']);
+    for(var i=0;i<nav.length&&!pick;i++){
+      var c=String(nav[i]).toLowerCase().slice(0,2);
+      if(c==='hy')pick='hy'; else if(c==='ru')pick='ru'; else if(c==='en')pick='en';
+    }
+  }
+  if(pick!=='hy'&&pick!=='ru'&&pick!=='en')pick='en';
+  location.replace(pick+'/index.html');
+})();
+</script>
+</body>
+</html>

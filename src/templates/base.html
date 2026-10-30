@@ -1,0 +1,169 @@
+{%- from 'macros.html' import roll, arrow, arrow_back, logo, chips, subnav with context -%}
+<!doctype html>
+<html lang="{{ lang }}" data-page="{{ page }}" data-theme="{{ theme }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<meta name="theme-color" content="{{ theme_color }}">
+<meta name="author" content="GeoGeeks">
+<meta property="og:site_name" content="GeoGeeks">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="{{ og_locale }}">
+{%- if og_image %}
+<meta property="og:image" content="{{ og_image }}">{% endif %}
+{%- if canonical %}
+<link rel="canonical" href="{{ canonical }}">
+{%- for l in langs %}
+<link rel="alternate" hreflang="{{ l.code }}" href="{{ l.abs }}">{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ xdefault }}">{% endif %}
+<link rel="icon" type="image/png" href="{{ root }}assets/img/favicon.png">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');
+try{var p=sessionStorage.getItem('ggPt');if(p){d.classList.add('pt-in');}}catch(e){}
+setTimeout(function(){if(!window.__ggReady){d.classList.add('pt-failsafe');}},9000);})();
+</script>
+<link rel="stylesheet" href="{{ root }}assets/css/fonts.css">
+<link rel="stylesheet" href="{{ root }}assets/css/main.css">
+<link rel="stylesheet" href="{{ root }}assets/css/pages.css">
+{%- if jsonld %}
+<script type="application/ld+json">{{ jsonld|safe }}</script>{% endif %}
+</head>
+<body class="page-{{ page }} th-{{ theme }}" data-hdr-now="{{ hdr0 }}">
+<a class="skip" href="#main">{{ x('skip') }}</a>
+
+{#- ============ page transition / loader overlay ============ -#}
+<div class="pt" aria-hidden="true">
+  <div class="pt-ink"></div>
+  <div class="pt-core">
+    {{ logo('pt-logo') }}
+    <div class="pt-word"></div>
+    <div class="pt-bar"><i></i></div>
+    <div class="pt-count mono"><span data-pt-n>0</span><i>%</i></div>
+  </div>
+</div>
+
+{#- ============ header ============ -#}
+<header class="hdr" data-hdr-el>
+  <a class="hdr-logo" href="{{ href('home') }}" aria-label="GeoGeeks">
+    {{ logo('hdr-mark') }}
+    <span class="hdr-word">GeoGeeks</span>
+  </a>
+  <nav class="hdr-nav" aria-label="{{ x('menu') }}">
+    {%- for m in menu if m.key != 'home' %}<a href="{{ m.href }}"{% if m.on %} class="is-on" aria-current="page"{% endif %}>{{ m.label }}</a>{% endfor -%}
+  </nav>
+  <div class="hdr-r">
+    <nav class="lang" aria-label="{{ x('language') }}">
+      {%- for l in langs %}<a class="lang-a{% if l.code == lang %} is-on{% endif %}" href="{{ l.href }}" hreflang="{{ l.code }}" lang="{{ l.code }}" data-lang="{{ l.code }}"{% if l.code == lang %} aria-current="true"{% endif %}>{{ l.label }}</a>{% endfor -%}
+      <i class="lang-ind"></i>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
+      <span class="menu-btn-label"><span class="mb-a">{{ x('menu') }}</span><span class="mb-b" aria-hidden="true">{{ t('ui.services.close') }}</span></span>
+      <span class="burger" aria-hidden="true"><i></i><i></i></span>
+      <span class="sr-only" data-menu-sr>{{ t('ui.nav.openMenu') }}</span>
+    </button>
+  </div>
+</header>
+
+{#- ============ full-screen menu ============ -#}
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="{{ x('menu') }}" inert>
+  <div class="menu-veil"></div>
+  <div class="menu-panel">
+    <div class="menu-grid">
+      <ol class="menu-list">
+        {%- for m in menu %}
+        <li class="menu-li"><a class="menu-link{% if m.on %} is-on{% endif %}" href="{{ m.href }}" data-img="{{ loop.index0 }}"{% if m.on %} aria-current="page"{% endif %}><span class="menu-idx mono">{{ '%02d' % loop.index }}</span><span class="menu-txt">{{ roll(m.label) }}</span></a></li>
+        {%- endfor %}
+      </ol>
+      <aside class="menu-side">
+        <div class="menu-shots" aria-hidden="true">
+          {%- for m in menu %}<div class="menu-shot" data-shot="{{ loop.index0 }}" style="background-image:url('{{ root }}{{ m.img }}')"></div>{% endfor %}
+        </div>
+        <div class="menu-info">
+          <a class="menu-mail" href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+          <a class="menu-tel mono" href="tel:{{ contact.tel }}">{{ contact.phone }}</a>
+          <p class="menu-addr">{{ t('ui.contact.addressValue') }}</p>
+          <div class="menu-soc mono">{% for s in social %}<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ s.label }}</a>{% endfor %}</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+{%- block canvas %}<canvas class="gl" id="gl" aria-hidden="true"></canvas>{% endblock %}
+{%- block pins %}{% endblock %}
+
+<div class="smooth" id="smooth">
+  <main id="main" tabindex="-1">
+{%- block main %}{% endblock %}
+  </main>
+
+{%- block footer %}
+  <footer class="ftr" data-theme="dark" data-hdr="on-dark">
+    <div class="wrap">
+      <p class="kicker mono">{{ t('ui.contact.followTitle') }}</p>
+      <a class="ftr-mail" href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+      <div class="ftr-grid">
+        <nav class="ftr-col" aria-label="GeoGeeks">
+          {%- for m in menu %}<a href="{{ m.href }}">{{ m.label }}</a>{% endfor %}
+        </nav>
+        <div class="ftr-col">
+          <span class="mono ftr-h">{{ t('ui.contact.address') }}</span>
+          <p>{{ t('ui.contact.addressValue') }}</p>
+          <span class="mono ftr-h">{{ t('ui.contact.phone') }}</span>
+          <a href="tel:{{ contact.tel }}">{{ contact.phone }}</a>
+        </div>
+        <div class="ftr-col">
+          <span class="mono ftr-h">{{ t('ui.contact.followTitle') }}</span>
+          {%- for s in social %}<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ s.label }}<span class="ext" aria-hidden="true">↗</span></a>{% endfor %}
+        </div>
+      </div>
+      <div class="ftr-bot">
+        <span class="ftr-logo">{{ logo('ftr-mark') }}<small>{{ t('ui.footer.rights') }}</small></span>
+        <a class="totop mono" href="#main" data-totop>{{ x('top') }} ↑</a>
+      </div>
+      <p class="credits mono">{{ x('credits') }}</p>
+    </div>
+  </footer>
+{%- endblock %}
+
+{%- block portal %}
+{%- if next %}
+  <section class="portal" data-portal data-href="{{ next.href }}" data-title="{{ next.title }}" data-color="{{ next.color }}" data-fg="{{ next.fg }}" data-hdr="on-dark" aria-label="{{ x('next') }}">
+    <div class="portal-st">
+      <div class="portal-fill" style="background:{{ next.color }}"></div>
+      <a class="portal-a" href="{{ next.href }}" data-no-pt>
+        <span class="kicker mono">{{ next.kicker }}</span>
+        <span class="portal-t">{{ next.title }}</span>
+        <span class="portal-h mono"><i></i>{{ x('keep') }}</span>
+      </a>
+    </div>
+  </section>
+{%- endif %}
+{%- endblock %}
+</div>
+
+<script>
+window.GG={lang:"{{ lang }}",page:"{{ page }}",root:"{{ root }}",clean:{{ 'true' if clean_urls else 'false' }},
+ t:{{ js_strings|tojson }}{% if page_data %},d:{{ page_data|tojson }}{% endif %}};
+</script>
+<script src="{{ root }}assets/vendor/gsap.min.js"></script>
+<script src="{{ root }}assets/vendor/ScrollTrigger.min.js"></script>
+<script src="{{ root }}assets/vendor/lenis.min.js"></script>
+{%- if use_three %}
+<script src="{{ root }}assets/vendor/three.min.js"></script>
+{%- endif %}
+{%- if use_geo %}
+<script src="{{ root }}assets/data/geo.js"></script>
+<script src="{{ root }}assets/js/terrain.js"></script>
+{%- endif %}
+{%- for j in extra_js %}
+<script src="{{ root }}assets/js/{{ j }}.js"></script>
+{%- endfor %}
+<script src="{{ root }}assets/js/app.js"></script>
+<script src="{{ root }}assets/js/pages.js"></script>
+</body>
+</html>

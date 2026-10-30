@@ -1,0 +1,253 @@
+{
+ "_note": "Interface strings written for the new design (they do not exist on geogeeks.am). hy/ru need a native proofread.",
+ "skip": {
+  "hy": "Անցնել բովանդակությանը",
+  "en": "Skip to content",
+  "ru": "Перейти к содержимому"
+ },
+ "language": {
+  "hy": "Լեզու",
+  "en": "Language",
+  "ru": "Язык"
+ },
+ "menu": {
+  "hy": "Մենյու",
+  "en": "Menu",
+  "ru": "Меню"
+ },
+ "top": {
+  "hy": "Վերև",
+  "en": "Back to top",
+  "ru": "Наверх"
+ },
+ "credits": {
+  "hy": "Ռելիեֆ՝ AWS Terrain Tiles · Սահմաններ՝ geoBoundaries (CC BY 2.5)",
+  "en": "Terrain: AWS Terrain Tiles · Boundaries: geoBoundaries (CC BY 2.5)",
+  "ru": "Рельеф: AWS Terrain Tiles · Границы: geoBoundaries (CC BY 2.5)"
+ },
+ "next": {
+  "hy": "Հաջորդ",
+  "en": "Next",
+  "ru": "Далее"
+ },
+ "next.sector": {
+  "hy": "Հաջորդ ոլորտ",
+  "en": "Next sector",
+  "ru": "Следующая отрасль"
+ },
+ "next.project": {
+  "hy": "Հաջորդ նախագիծ",
+  "en": "Next project",
+  "ru": "Следующий проект"
+ },
+ "keep": {
+  "hy": "Շարունակեք ոլորել",
+  "en": "Keep scrolling",
+  "ru": "Листайте дальше"
+ },
+ "scroll": {
+  "hy": "Ոլորել",
+  "en": "Scroll",
+  "ru": "Листайте"
+ },
+ "open": {
+  "hy": "Բացել",
+  "en": "Open",
+  "ru": "Открыть"
+ },
+ "mailLabel": {
+  "hy": "Գրել",
+  "en": "Write",
+  "ru": "Написать"
+ },
+ "all": {
+  "hy": "Բոլորը",
+  "en": "All",
+  "ru": "Все"
+ },
+ "tools": {
+  "hy": "Գործիքներ և մեթոդներ",
+  "en": "Tools & methods",
+  "ru": "Инструменты и методы"
+ },
+ "copy": {
+  "hy": "Պատճենել",
+  "en": "Copy",
+  "ru": "Копировать"
+ },
+ "copied": {
+  "hy": "Պատճենվեց",
+  "en": "Copied",
+  "ru": "Скопировано"
+ },
+ "home.kicker": {
+  "hy": "ԱՏՀ · Հիդրոլոգիա · Ջրհեղեղների մոդելավորում",
+  "en": "GIS · Hydrology · Flood modelling",
+  "ru": "ГИС · Гидрология · Моделирование наводнений"
+ },
+ "home.what": {
+  "hy": "Ինչ ենք անում",
+  "en": "What we do",
+  "ru": "Чем мы занимаемся"
+ },
+ "home.where": {
+  "hy": "Ընտրված նախագծեր քարտեզի վրա",
+  "en": "Selected projects on the map",
+  "ru": "Избранные проекты на карте"
+ },
+ "home.whereT": {
+  "hy": "Հայաստան",
+  "en": "Armenia",
+  "ru": "Армения"
+ },
+ "home.mapHint": {
+  "hy": "Ընտրեք մարզ կամ նշան",
+  "en": "Pick a province or a marker",
+  "ru": "Выберите область или маркер"
+ },
+ "home.platforms": {
+  "hy": "Մեր հարթակները",
+  "en": "Our platforms",
+  "ru": "Наши платформы"
+ },
+ "terrain.cap": {
+  "hy": "Հայաստան — ռելիեֆի կենդանի մոդել",
+  "en": "Armenia — live terrain model",
+  "ru": "Армения — живая модель рельефа"
+ },
+ "terrain.note": {
+  "hy": "Ցուցադրական մոդել իրական բարձրությունների տվյալների վրա. ջրածածկման գոտին հաշվարկված է գետային ցանցից հարաբերական բարձրության (HAND) մոդելով և հիդրավլիկ հաշվարկ չէ։",
+  "en": "An illustrative model on real elevation data: the flooded zone is derived from a height-above-nearest-drainage (HAND) model and is not a hydraulic study.",
+  "ru": "Иллюстративная модель на реальных данных рельефа: зона затопления получена по модели высоты над ближайшим водотоком (HAND) и не заменяет гидравлический расчёт."
+ },
+ "stage": {
+  "hy": "Ջրի մակարդակ",
+  "en": "Flood stage",
+  "ru": "Уровень воды"
+ },
+ "pin.yerevan": {
+  "hy": "Երևան",
+  "en": "Yerevan",
+  "ru": "Ереван"
+ },
+ "pin.stepanavan": {
+  "hy": "Ստեփանավան",
+  "en": "Stepanavan",
+  "ru": "Степанаван"
+ },
+ "pin.sevan": {
+  "hy": "Սևան",
+  "en": "Lake Sevan",
+  "ru": "Озеро Севан"
+ },
+ "pin.anpp": {
+  "hy": "ՀԱԷԿ",
+  "en": "Armenian NPP",
+  "ru": "Армянская АЭС"
+ },
+ "stat.founded": {
+  "hy": "Հիմնադրվել է",
+  "en": "Founded",
+  "ru": "Год основания"
+ },
+ "stat.sectors": {
+  "hy": "Ոլորտ",
+  "en": "Sectors",
+  "ru": "Отраслей"
+ },
+ "stat.partners": {
+  "hy": "Պատվիրատու և գործընկեր",
+  "en": "Clients & partners",
+  "ru": "Клиентов и партнёров"
+ },
+ "n.one": {
+  "hy": "{n} նախագիծ",
+  "en": "{n} project",
+  "ru": "{n} проект"
+ },
+ "n.few": {
+  "hy": "{n} նախագիծ",
+  "en": "{n} projects",
+  "ru": "{n} проекта"
+ },
+ "n.many": {
+  "hy": "{n} նախագիծ",
+  "en": "{n} projects",
+  "ru": "{n} проектов"
+ },
+ "tool.open": {
+  "hy": "Բացել փոխարկիչը",
+  "en": "Open the converter",
+  "ru": "Открыть конвертер"
+ },
+ "tool.privacyH": {
+  "hy": "Գաղտնիություն",
+  "en": "Privacy",
+  "ru": "Конфиденциальность"
+ },
+ "tool.limitsH": {
+  "hy": "Սահմանափակումներ",
+  "en": "Limits",
+  "ru": "Ограничения"
+ },
+ "home.viewerT": {
+  "hy": "Հայաստանը տվյալներով",
+  "en": "Armenia, in data",
+  "ru": "Армения в данных"
+ },
+ "view.relief": {
+  "hy": "Ռելիեֆ",
+  "en": "Relief",
+  "ru": "Рельеф"
+ },
+ "view.hydro": {
+  "hy": "Հիդրոլոգիա",
+  "en": "Hydrology",
+  "ru": "Гидрология"
+ },
+ "view.reliefD": {
+  "hy": "Իրական բարձրությունների տվյալներ՝ հորիզոնականներ ամեն 100 մ-ը մեկ։",
+  "en": "Real elevation data, with contour lines every 100 m.",
+  "ru": "Реальные данные рельефа, горизонтали через 100 м."
+ },
+ "view.hydroD": {
+  "hy": "Գետային ցանցը և հոսքի ուղիները ստացված են բարձրությունների մոդելից։",
+  "en": "River network and flow paths derived from the elevation model.",
+  "ru": "Речная сеть и пути стока получены по модели рельефа."
+ },
+ "layer.contours": {
+  "hy": "Հորիզոնականներ",
+  "en": "Contours",
+  "ru": "Горизонтали"
+ },
+ "layer.hint": {
+  "hy": "Քաշեք՝ պտտելու համար",
+  "en": "Drag to rotate",
+  "ru": "Потяните, чтобы повернуть"
+ },
+ "home.overview": {
+  "hy": "Ակնարկ",
+  "en": "Overview",
+  "ru": "Обзор"
+ },
+ "cloud.cap": {
+  "hy": "Հայաստան — իրական բարձրությունները՝ մասնիկներով",
+  "en": "Armenia — real elevation, drawn in particles",
+  "ru": "Армения — реальный рельеф в частицах"
+ },
+ "about.years": {
+  "hy": "հիմնադրումից մինչև այսօր",
+  "en": "from founding to today",
+  "ru": "от основания до сегодня"
+ },
+ "contact.hint": {
+  "hy": "Շարժեք կուրսորը",
+  "en": "Move your cursor",
+  "ru": "Двигайте курсор"
+ },
+ "tool.specs": {
+  "hy": "Բնութագրեր",
+  "en": "Specifications",
+  "ru": "Характеристики"
+ }
+}

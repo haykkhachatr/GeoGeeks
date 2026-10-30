@@ -1,0 +1,6 @@
+{
+  "_help": "site_url: public https origin without trailing slash (enables canonical/hreflang/sitemap). clean_urls: true links to folders (/hy/services/) for servers; false links to .../index.html so the site also works when opened from disk. tool_url: where the working shapefile->DXF converter lives (see README).",
+  "site_url": "",
+  "clean_urls": false,
+  "tool_url": "https://geogeeks.am/tools/shp-to-dxf/"
+}

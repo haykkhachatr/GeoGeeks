@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block main %}
+{%- set nav = [('top', x('home.overview'))] %}{% for s in svcs %}{% set _ = nav.append((s.key, s.card)) %}{% endfor %}
+{{ subnav(nav, x('home.overview')) }}
+
+{#- hero: the warm-palette map, a numbered index of the three services (after abatable.com / piergorelli.com) -#}
+<section class="sec shero" id="top" data-map="svcHero" data-hdr="on-dark">
+  <div class="wrap shero-in">
+    <p class="kicker mono"><i class="pulse"></i>{{ x('home.kicker') }}</p>
+    <h1 class="mega shero-h" style="--n:{{ t('ui.nav.services')|length }}" data-split="fade" aria-label="{{ t('ui.h1.services') }}">{{ t('ui.nav.services') }}</h1>
+    <p class="shero-sub" data-fx="fade">{{ t('ui.h1.services') }}</p>
+    <ol class="shero-idx" data-fx="fade">
+      {%- for s in svcs %}
+      <li><a class="sidx" href="#{{ s.key }}"><span class="mono">{{ '%02d' % loop.index }}</span><b>{{ s.card }}</b>{{ arrow() }}</a></li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+
+{#- glass card with the interactive 3D layer stack -#}
+<section class="sec slayer" id="layers" data-map="svcLayers" data-hdr="on-dark">
+  <div class="wrap">
+    <div class="slayer-card glass">
+      <div class="slayer-copy">
+        <p class="kicker mono"><b>00</b>{{ svcs[0].subs[0].label }}</p>
+        <h2 class="h2" data-split="words">{{ svcs[0].subs[0].label }}</h2>
+        <p class="lede">{{ svcs[0].subs[0].desc }}</p>
+        <p class="mono slayer-hint">{{ x('layer.hint') }}</p>
+      </div>
+      <div class="slayer-stage">
+        <canvas class="gl2" id="gl2" aria-hidden="true"></canvas>
+        <div class="lyr-labels" data-lyr-labels aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{#- three services as numbered chapters: the numeral stays on the map, the content sits in a glass panel -#}
+{%- for s in svcs %}
+<section class="sec sv" id="{{ s.key }}" data-chap data-map="svc{{ s.key|capitalize }}"{% if s.key == 'hydro' %} data-flood{% endif %} data-hdr="on-dark">
+  <div class="wrap sv-grid">
+    <div class="sv-num" aria-hidden="true"><span class="sv-n">{{ '%02d' % loop.index }}</span><span class="sv-t">/{{ '%02d' % svcs|length }}</span></div>
+    <div class="sv-main glass">
+      <div class="sv-head">
+        <p class="mono sv-meta"><i class="sv-dot"></i>{{ s.chips|join(' · ') }}</p>
+        <h2 class="h2 sv-title" data-split="words">{{ s.title }}</h2>
+        <p class="lede" data-fx="fade">{{ s.desc }}</p>
+      </div>
+      <div class="sv-body" data-tabs>
+        <div class="panels">
+          {%- for sub in s.subs %}
+          <div class="panel" role="tabpanel" id="pn-{{ s.key }}-{{ sub.key }}" aria-labelledby="tab-{{ s.key }}-{{ sub.key }}"{% if not loop.first %} hidden{% endif %}>
+            <div class="panel-copy">
+              <p class="panel-d">{{ sub.desc }}</p>
+              <ul class="items">
+                {%- for it in sub.rows %}<li><strong>{{ it.l }}</strong> {{ it.t }}</li>{% endfor %}
+              </ul>
+            </div>
+            <figure class="panel-fig"><img src="{{ root }}assets/img/services/{{ sub.key }}.webp" alt="{{ sub.label }}" loading="lazy" decoding="async"></figure>
+          </div>
+          {%- endfor %}
+        </div>
+        <div class="tabs" role="tablist" aria-label="{{ s.card }}">
+          {%- for sub in s.subs %}
+          <button class="tab" type="button" role="tab" id="tab-{{ s.key }}-{{ sub.key }}" aria-controls="pn-{{ s.key }}-{{ sub.key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}"><span class="tab-n mono">{{ '%02d' % loop.index }}</span><span class="tab-l">{{ sub.label }}</span><i class="tab-bar"></i></button>
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endfor %}
+
+<a class="sticky-cta" href="{{ href('contact') }}" data-sticky-cta><span>{{ t('ui.nav.contact') }}</span>{{ arrow() }}</a>
+{% endblock %}

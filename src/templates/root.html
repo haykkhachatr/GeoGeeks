@@ -1,0 +1,45 @@
+{%- from 'macros.html' import logo with context -%}
+<!doctype html>
+<html lang="en" data-page="root">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GeoGeeks</title>
+<meta name="description" content="GeoGeeks — GIS · Hydrology · Flood modelling · ԱՏՀ · Հիդրոլոգիա · ГИС · Гидрология">
+<meta name="theme-color" content="#04161a">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="page-root">
+<main class="root">
+  <div class="root-bg" aria-hidden="true"></div>
+  <div class="root-in">
+    {{ logo('root-logo') }}
+    <h1 class="root-h mono">GeoGeeks</h1>
+    <nav class="root-nav" aria-label="Language">
+      {%- for l in langs %}
+      <a class="root-a" href="{{ l.href }}" hreflang="{{ l.code }}" lang="{{ l.code }}" data-lang="{{ l.code }}"><span class="root-c mono">{{ l.label }}</span><span class="root-n">{{ l.name }}</span><svg class="arw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a>
+      {%- endfor %}
+    </nav>
+  </div>
+</main>
+<script>
+(function(){
+  var q=location.search;
+  if(/[?&]choose\b/.test(q)) return;
+  var pick=null;
+  try{pick=localStorage.getItem('ggLang');}catch(e){}
+  if(!pick){
+    var nav=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en']);
+    for(var i=0;i<nav.length&&!pick;i++){
+      var c=String(nav[i]).toLowerCase().slice(0,2);
+      if(c==='hy')pick='hy'; else if(c==='ru')pick='ru'; else if(c==='en')pick='en';
+    }
+  }
+  if(pick!=='hy'&&pick!=='ru'&&pick!=='en')pick='en';
+  location.replace(pick+'/{{ '' if clean_urls else 'index.html' }}');
+})();
+</script>
+</body>
+</html>

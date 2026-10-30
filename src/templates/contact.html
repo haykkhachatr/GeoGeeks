@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block main %}
+{#- warm particles that react to the cursor (after myshaky.com), soft pills (after anima.ai) -#}
+<section class="sec chero" id="top" data-map="contact" data-hdr="on-dark">
+  <div class="wrap chero-in">
+    <p class="kicker mono"><i class="pulse"></i>{{ t('ui.contact.addressValue') }}</p>
+    <h1 class="mega chero-h" style="--n:{{ t('ui.nav.contact')|length }}" data-split="fade" aria-label="{{ t('ui.h1.contact') }}">{{ t('ui.nav.contact') }}</h1>
+    <div class="cpills" data-fx="fade">
+      <a class="cpill cpill-main" href="mailto:{{ contact.email }}" data-cursor="mail"><span class="cpill-l mono">{{ t('ui.contact.email') }}</span><span class="cpill-v">{{ contact.email }}</span>{{ arrow() }}</a>
+      <a class="cpill" href="tel:{{ contact.tel }}"><span class="cpill-l mono">{{ t('ui.contact.phone') }}</span><span class="cpill-v">{{ contact.phone }}</span>{{ arrow() }}</a>
+      <p class="cpill cpill-s"><span class="cpill-l mono">{{ t('ui.contact.address') }}</span><span class="cpill-v">{{ t('ui.contact.addressValue') }}</span></p>
+    </div>
+    <button class="copy mono" type="button" data-copy="{{ contact.email }}" data-copied="{{ x('copied') }}"><span>{{ x('copy') }}</span></button>
+  </div>
+  <p class="chero-hint mono" aria-hidden="true">{{ x('contact.hint') }}</p>
+</section>
+
+<section class="sec cfollow" data-map="contactQuiet" data-hdr="on-dark">
+  <div class="wrap">
+    <div class="cfollow-grid glass">
+      <div>
+        <h2 class="h2" data-split="words">{{ t('ui.contact.followTitle') }}</h2>
+        <p class="lede">{{ t('ui.contact.followText') }}</p>
+      </div>
+      <ul class="soc-l">
+        {%- for s in social %}
+        <li><a class="soc-a" href="{{ s.url }}" target="_blank" rel="noopener noreferrer"><span>{{ s.label }}</span>{{ arrow() }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

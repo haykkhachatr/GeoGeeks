@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" data-page="sector" data-theme="projects">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Flood modelling | GeoGeeks</title>
+<meta name="description" content="Flood modelling.">
+<meta name="theme-color" content="#060f1d">
+<meta name="author" content="GeoGeeks">
+<meta property="og:site_name" content="GeoGeeks">
+<meta property="og:title" content="Flood modelling | GeoGeeks">
+<meta property="og:description" content="Flood modelling.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<link rel="icon" type="image/png" href="../../../assets/img/favicon.png">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');
+try{var p=sessionStorage.getItem('ggPt');if(p){d.classList.add('pt-in');}}catch(e){}
+setTimeout(function(){if(!window.__ggReady){d.classList.add('pt-failsafe');}},9000);})();
+</script>
+<link rel="stylesheet" href="../../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../../assets/css/main.css">
+<link rel="stylesheet" href="../../../assets/css/pages.css">
+</head>
+<body class="page-sector th-projects" data-hdr-now="on-dark">
+<a class="skip" href="#main">Skip to content</a><div class="pt" aria-hidden="true">
+  <div class="pt-ink"></div>
+  <div class="pt-core">
+    <svg class="logo pt-logo" viewBox="0 0 1181 1181" aria-hidden="true" focusable="false"><path class="f-y" fill="#f7db5d" d="M473 136L132 477L132 479L566 812L570 813L475 136Z"/><path class="f-g" fill="#605c5c" d="M497 112L550 490L948 377L948 374L630 56L622 50L612 45L601 42L582 42L571 45L561 50L552 57Z"/><path class="f-t" fill="#0c8495" d="M973 399L554 519L598 836L779 975L781 975L1128 628L1137 613L1140 604L1141 585L1137 569L1131 558Z"/><path class="f-n" fill="#00a97a" d="M52 558L46 569L43 579L42 596L46 613L56 629L559 1131L577 1139L590 1141L603 1140L613 1137L624 1131L760 996L759 992L115 498L111 498Z"/></svg>
+    <div class="pt-word"></div>
+    <div class="pt-bar"><i></i></div>
+    <div class="pt-count mono"><span data-pt-n>0</span><i>%</i></div>
+  </div>
+</div><header class="hdr" data-hdr-el>
+  <a class="hdr-logo" href="../../index.html" aria-label="GeoGeeks">
+    <svg class="logo hdr-mark" viewBox="0 0 1181 1181" aria-hidden="true" focusable="false"><path class="f-y" fill="#f7db5d" d="M473 136L132 477L132 479L566 812L570 813L475 136Z"/><path class="f-g" fill="#605c5c" d="M497 112L550 490L948 377L948 374L630 56L622 50L612 45L601 42L582 42L571 45L561 50L552 57Z"/><path class="f-t" fill="#0c8495" d="M973 399L554 519L598 836L779 975L781 975L1128 628L1137 613L1140 604L1141 585L1137 569L1131 558Z"/><path class="f-n" fill="#00a97a" d="M52 558L46 569L43 579L42 596L46 613L56 629L559 1131L577 1139L590 1141L603 1140L613 1137L624 1131L760 996L759 992L115 498L111 498Z"/></svg>
+    <span class="hdr-word">GeoGeeks</span>
+  </a>
+  <nav class="hdr-nav" aria-label="Menu"><a href="../../tools/shp-to-dxf/index.html">Tools</a><a href="../../services/index.html">Services</a><a href="../index.html" class="is-on" aria-current="page">Projects</a><a href="../../about/index.html">About</a><a href="../../contact/index.html">Contact</a></nav>
+  <div class="hdr-r">
+    <nav class="lang" aria-label="Language"><a class="lang-a" href="../../../hy/projects/flood/index.html" hreflang="hy" lang="hy" data-lang="hy">ՀԱՅ</a><a class="lang-a is-on" href="index.html" hreflang="en" lang="en" data-lang="en" aria-current="true">ENG</a><a class="lang-a" href="../../../ru/projects/flood/index.html" hreflang="ru" lang="ru" data-lang="ru">РУС</a><i class="lang-ind"></i>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
+      <span class="menu-btn-label"><span class="mb-a">Menu</span><span class="mb-b" aria-hidden="true">Close</span></span>
+      <span class="burger" aria-hidden="true"><i></i><i></i></span>
+      <span class="sr-only" data-menu-sr>Open the menu</span>
+    </button>
+  </div>
+</header><div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" inert>
+  <div class="menu-veil"></div>
+  <div class="menu-panel">
+    <div class="menu-grid">
+      <ol class="menu-list">
+        <li class="menu-li"><a class="menu-link" href="../../index.html" data-img="0"><span class="menu-idx mono">01</span><span class="menu-txt"><span class="roll "><span class="sr-only">Home</span><span class="roll-in" aria-hidden="true"><span class="ch" style="--i:0"><span>H</span><span>H</span></span><span class="ch" style="--i:1"><span>o</span><span>o</span></span><span class="ch" style="--i:2"><span>m</span><span>m</span></span><span class="ch" style="--i:3"><span>e</span><span>e</span></span></span></span></span></a></li>
+        <li class="menu-li"><a class="menu-link" href="../../tools/shp-to-dxf/index.html" data-img="1"><span class="menu-idx mono">02</span><span class="menu-txt"><span class="roll "><span class="sr-only">Tools</span><span class="roll-in" aria-hidden="true"><span class="ch" style="--i:0"><span>T</span><span>T</span></span><span class="ch" style="--i:1"><span>o</span><span>o</span></span><span class="ch" style="--i:2"><span>o</span><span>o</span></span><span class="ch" style="--i:3"><span>l</span><span>l</span></span><span class="ch" style="--i:4"><span>s</span><span>s</span></span></span></span></span></a></li>
+        <li class="menu-li"><a class="menu-link" href="../../services/index.html" data-img="2"><span class="menu-idx mono">03</span><span class="menu-txt"><span class="roll "><span class="sr-only">Services</span><span class="roll-in" aria-hidden="true"><span class="ch" style="--i:0"><span>S</span><span>S</span></span><span class="ch" style="--i:1"><span>e</span><span>e</span></span><span class="ch" style="--i:2"><span>r</span><span>r</span></span><span class="ch" style="--i:3"><span>v</span><span>v</span></span><span class="ch" style="--i:4"><span>i</span><span>i</span></span><span class="ch" style="--i:5"><span>c</span><span>c</span></span><span class="ch" style="--i:6"><span>e</span><span>e</span></span><span class="ch" style="--i:7"><span>s</span><span>s</span></span></span></span></span></a></li>
+        <li class="menu-li"><a class="menu-link is-on" href="../index.html" data-img="3" aria-current="page"><span class="menu-idx mono">04</span><span class="menu-txt"><span class="roll "><span class="sr-only">Projects</span><span class="roll-in" aria-hidden="true"><span class="ch" style="--i:0"><span>P</span><span>P</span></span><span class="ch" style="--i:1"><span>r</span><span>r</span></span><span class="ch" style="--i:2"><span>o</span><span>o</span></span><span class="ch" style="--i:3"><span>j</span><span>j</span></span><span class="ch" style="--i:4"><span>e</span><span>e</span></span><span class="ch" style="--i:5"><span>c</span><span>c</span></span><span class="ch" style="--i:6"><span>t</span><span>t</span></span><span class="ch" style="--i:7"><span>s</span><span>s</span></span></span></span></span></a></li>
+        <li class="menu-li"><a class="menu-link" href="../../about/index.html" data-img="4"><span class="menu-idx mono">05</span><span class="menu-txt"><span class="roll "><span class="sr-only">About</span><span class="roll-in" aria-hidden="true"><span class="ch" style="--i:0"><span>A</span><span>A</span></span><span class="ch" style="--i:1"><span>b</span><span>b</span></span><span class="ch" style="--i:2"><span>o</span><span>o</span></span><span class="ch" style="--i:3"><span>u</span><span>u</span></span><span class="ch" style="--i:4"><span>t</span><span>t</span></span></span></span></span></a></li>
+        <li class="menu-li"><a class="menu-link" href="../../contact/index.html" data-img="5"><span class="menu-idx mono">06</span><span class="menu-txt"><span class="roll "><span class="sr-only">Contact</span><span class="roll-in" aria-hidden="true"><span class="ch" style="--i:0"><span>C</span><span>C</span></span><span class="ch" style="--i:1"><span>o</span><span>o</span></span><span class="ch" style="--i:2"><span>n</span><span>n</span></span><span class="ch" style="--i:3"><span>t</span><span>t</span></span><span class="ch" style="--i:4"><span>a</span><span>a</span></span><span class="ch" style="--i:5"><span>c</span><span>c</span></span><span class="ch" style="--i:6"><span>t</span><span>t</span></span></span></span></span></a></li>
+      </ol>
+      <aside class="menu-side">
+        <div class="menu-shots" aria-hidden="true"><div class="menu-shot" data-shot="0" style="background-image:url('../../../assets/img/sectors/flood.webp')"></div><div class="menu-shot" data-shot="1" style="background-image:url('../../../assets/img/services/gis.webp')"></div><div class="menu-shot" data-shot="2" style="background-image:url('../../../assets/img/services/hydro.webp')"></div><div class="menu-shot" data-shot="3" style="background-image:url('../../../assets/img/sectors/hydro.webp')"></div><div class="menu-shot" data-shot="4" style="background-image:url('../../../assets/img/sectors/edu.webp')"></div><div class="menu-shot" data-shot="5" style="background-image:url('../../../assets/img/sectors/urban.webp')"></div>
+        </div>
+        <div class="menu-info">
+          <a class="menu-mail" href="mailto:geogeeksllc@gmail.com">geogeeksllc@gmail.com</a>
+          <a class="menu-tel mono" href="tel:+37498098006">+374 (98) 09-80-06</a>
+          <p class="menu-addr">Adonts 4/3, Yerevan, Armenia</p>
+          <div class="menu-soc mono"><a href="https://www.facebook.com/GeoGeeksLLC" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.linkedin.com/company/73023299/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/geogeeksllc/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div><canvas class="gl" id="gl" aria-hidden="true"></canvas>
+
+<div class="smooth" id="smooth">
+  <main id="main" tabindex="-1">
+<section class="sec mapapp" id="top" data-map="projQuiet" data-hdr="on-dark">
+  <div class="wrap mapapp-in">
+    <header class="mapapp-l">
+      <a class="back" href="../index.html"><svg class="arw arw-b" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg><span>Back</span></a>
+      <p class="kicker mono">Projects · 02 / 08 · 3 projects</p>
+      <h1 class="h1 sec-title" data-split="fade">Flood modelling</h1>
+    </header>
+    <div class="mapapp-r glass">
+      <figure class="sec-fig"><img src="../../../assets/img/sectors/flood.webp" alt="" decoding="async"></figure>
+      <ol class="plx">
+        <li class="plx-li">
+          <a class="prx" href="urut-wwtp-flood-risk/index.html">
+            <span class="prx-img"><img src="../../../assets/img/projects/urut-wwtp-flood-risk-card.webp" alt="" loading="lazy" decoding="async"></span>
+            <span class="prx-b">
+              <span class="prx-meta mono"><b>2025</b><span>2 months</span></span>
+              <h2 class="prx-t">Flood risk assessment for the Urut wastewater treatment plant</h2>
+              <span class="prx-c">Client: Jrtuk LLC</span>
+            </span>
+            <span class="prx-a"><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span>
+          </a>
+        </li>
+        <li class="plx-li">
+          <a class="prx" href="kamertoon-flood-risk/index.html">
+            <span class="prx-img"><img src="../../../assets/img/projects/kamertoon-flood-risk-card.webp" alt="" loading="lazy" decoding="async"></span>
+            <span class="prx-b">
+              <span class="prx-meta mono"><b>2025</b><span>2 months</span></span>
+              <h2 class="prx-t">Flood risk assessment for the Kamertoon multifunctional complex</h2>
+              <span class="prx-c">Client: Kamertoon CJSC</span>
+            </span>
+            <span class="prx-a"><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span>
+          </a>
+        </li>
+        <li class="plx-li">
+          <a class="prx" href="anpp-debris-flow/index.html">
+            <span class="prx-img"><img src="../../../assets/img/projects/anpp-debris-flow-card.webp" alt="" loading="lazy" decoding="async"></span>
+            <span class="prx-b">
+              <span class="prx-meta mono"><b>2023</b><span>3 months</span></span>
+              <h2 class="prx-t">Analysis of the impact of a possible debris flow on the safety of the Armenian Nuclear Power Plant</h2>
+              <span class="prx-c">Client: Scientific and Technical Center for Nuclear and Radiation Safety CJSC</span>
+            </span>
+            <span class="prx-a"><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span>
+          </a>
+        </li>
+      </ol>
+      <nav class="osec" aria-label="Projects"><a class="chip-b" href="../hydro/index.html">Hydrological studies</a><a class="chip-b" href="../water/index.html">Water resources</a><a class="chip-b" href="../urban/index.html">Urban planning</a><a class="chip-b" href="../agri/index.html">Agriculture</a><a class="chip-b" href="../forest/index.html">Forestry</a><a class="chip-b" href="../edu/index.html">GIS education</a><a class="chip-b" href="../our/index.html">All our projects</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="ftr" data-theme="dark" data-hdr="on-dark">
+    <div class="wrap">
+      <p class="kicker mono">Follow the work</p>
+      <a class="ftr-mail" href="mailto:geogeeksllc@gmail.com">geogeeksllc@gmail.com</a>
+      <div class="ftr-grid">
+        <nav class="ftr-col" aria-label="GeoGeeks"><a href="../../index.html">Home</a><a href="../../tools/shp-to-dxf/index.html">Tools</a><a href="../../services/index.html">Services</a><a href="../index.html">Projects</a><a href="../../about/index.html">About</a><a href="../../contact/index.html">Contact</a>
+        </nav>
+        <div class="ftr-col">
+          <span class="mono ftr-h">Address</span>
+          <p>Adonts 4/3, Yerevan, Armenia</p>
+          <span class="mono ftr-h">Phone</span>
+          <a href="tel:+37498098006">+374 (98) 09-80-06</a>
+        </div>
+        <div class="ftr-col">
+          <span class="mono ftr-h">Follow the work</span><a href="https://www.facebook.com/GeoGeeksLLC" target="_blank" rel="noopener noreferrer">Facebook<span class="ext" aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/company/73023299/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="ext" aria-hidden="true">↗</span></a><a href="https://www.instagram.com/geogeeksllc/" target="_blank" rel="noopener noreferrer">Instagram<span class="ext" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="ftr-bot">
+        <span class="ftr-logo"><svg class="logo ftr-mark" viewBox="0 0 1181 1181" aria-hidden="true" focusable="false"><path class="f-y" fill="#f7db5d" d="M473 136L132 477L132 479L566 812L570 813L475 136Z"/><path class="f-g" fill="#605c5c" d="M497 112L550 490L948 377L948 374L630 56L622 50L612 45L601 42L582 42L571 45L561 50L552 57Z"/><path class="f-t" fill="#0c8495" d="M973 399L554 519L598 836L779 975L781 975L1128 628L1137 613L1140 604L1141 585L1137 569L1131 558Z"/><path class="f-n" fill="#00a97a" d="M52 558L46 569L43 579L42 596L46 613L56 629L559 1131L577 1139L590 1141L603 1140L613 1137L624 1131L760 996L759 992L115 498L111 498Z"/></svg><small>© 2026 GeoGeeks LLC. All rights reserved.</small></span>
+        <a class="totop mono" href="#main" data-totop>Back to top ↑</a>
+      </div>
+      <p class="credits mono">Terrain: AWS Terrain Tiles · Boundaries: geoBoundaries (CC BY 2.5)</p>
+    </div>
+  </footer>
+  <section class="portal" data-portal data-href="../water/index.html" data-title="Water resources" data-color="#0a1830" data-fg="#f7db5d" data-hdr="on-dark" aria-label="Next">
+    <div class="portal-st">
+      <div class="portal-fill" style="background:#0a1830"></div>
+      <a class="portal-a" href="../water/index.html" data-no-pt>
+        <span class="kicker mono">Next sector</span>
+        <span class="portal-t">Water resources</span>
+        <span class="portal-h mono"><i></i>Keep scrolling</span>
+      </a>
+    </div>
+  </section>
+</div>
+
+<script>
+window.GG={lang:"en",page:"sector",root:"../../../",clean:false,
+ t:{"all": "All", "close": "Close", "closeMenu": "Close the menu", "copied": "Copied", "copy": "Copy", "layers": ["Relief", "Contours", "Hydrology", "Flood modelling"], "mail": "Write", "menu": "Menu", "open": "Open", "openMenu": "Open the menu", "pins": {"anpp": "Armenian NPP", "sevan": "Lake Sevan", "stepanavan": "Stepanavan", "yerevan": "Yerevan"}, "stage": "Flood stage", "view": "View"}};
+</script>
+<script src="../../../assets/vendor/gsap.min.js"></script>
+<script src="../../../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../../../assets/vendor/lenis.min.js"></script>
+<script src="../../../assets/vendor/three.min.js"></script>
+<script src="../../../assets/data/geo.js"></script>
+<script src="../../../assets/js/terrain.js"></script>
+<script src="../../../assets/js/cloud.js"></script>
+<script src="../../../assets/js/app.js"></script>
+<script src="../../../assets/js/pages.js"></script>
+</body>
+</html>
