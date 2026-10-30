@@ -208,7 +208,7 @@ PAGE_COLOR = {'home': ('#06222c', '#e8f3f4'), 'tools': ('#06323b', '#7fe3f0'), '
               'projects': ('#0a1830', '#f7db5d'), 'about': ('#06302a', '#5fe6b4'), 'contact': ('#06231e', '#f7db5d')}
 THEME = {'home': 'home', 'tools': 'tools', 'services': 'services', 'projects': 'projects', 'sector': 'projects',
          'project': 'projects', 'about': 'about', 'contact': 'contact'}
-THEME_META = {'home': '#03121a', 'tools': '#031a20', 'services': '#04160f', 'projects': '#060f1d', 'about': '#04140f', 'contact': '#05201b'}
+THEME_META = {'home': '#f5f2ea', 'tools': '#eef4f2', 'services': '#f1f4ea', 'projects': '#f4f2ea', 'about': '#eef4ee', 'contact': '#f6f2e4'}
 HDR0 = {}
 CHAIN = {'home': 'services', 'tools': 'services', 'services': 'projects', 'projects': 'about', 'about': 'contact', 'contact': 'home'}
 CONTOURS = open(os.path.join(ROOT, 'assets', 'img', 'contours.svg'), encoding='utf8').read() if os.path.exists(os.path.join(ROOT, 'assets', 'img', 'contours.svg')) else ''
@@ -330,7 +330,7 @@ def render(lang, route, D, tpl, extra=None):
         og_image=(SITE_URL + '/assets/img/logo-512.webp') if SITE_URL else '', canonical=abs_url(lang, cur) if SITE_URL else '',
         xdefault=abs_url('hy', cur) if SITE_URL else '', langs=langs, menu=menu, next=nxt, logo_paths=logo['paths'],
         t=T, x=T.x, href=href, clean_urls=CLEAN, js_strings=js_strings, page_data=page_data,
-        theme=THEME[k], theme_color=THEME_META[THEME[k]], hdr0=HDR0.get(k, 'on-dark'), contours_svg=Markup(CONTOURS),
+        theme=THEME[k], theme_color=THEME_META[THEME[k]], hdr0=HDR0.get(k, 'on-light'), contours_svg=Markup(CONTOURS),
         use_three=True, use_geo=True,
         extra_js=['cloud'] + {'services': ['layers'], 'tools': ['parcel']}.get(k, []), about_heading=about_heading, back_label=back_label,
         client_label=client_label, hero_desc=hero_desc, tool_url=cfg['tool_url'], jsonld=None,

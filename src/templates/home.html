@@ -8,7 +8,7 @@
 {{ subnav([('top', x('home.overview')), ('services', x('home.what')), ('projects', t('ui.nav.projects')), ('platforms', x('home.platforms')), ('partners', t('ui.about.partners'))], x('home.overview')) }}
 
 {#- ================= HERO — the map assembles itself ================= -#}
-<section class="sec hero" id="top" data-map="hero" data-hdr="on-dark">
+<section class="sec hero" id="top" data-map="hero" data-hdr="on-light">
   <div class="wrap hero-in">
     <p class="kicker mono hero-kick"><i class="pulse"></i>{{ x('home.kicker') }}</p>
     <h1 class="hero-h" data-split="words" aria-label="{{ t('ui.h1.home') }}">{{ hero_desc }}</h1>
@@ -29,7 +29,7 @@
 </section>
 
 {#- ================= ABOUT — one big statement, revealed by scrolling ================= -#}
-<section class="sec say say-about" id="about" data-map="about" data-hdr="on-dark">
+<section class="sec say say-about" id="about" data-map="about" data-hdr="on-light">
   <div class="say-st">
     <div class="wrap say-in">
       <p class="say-k mono"><b>01</b>{{ t('ui.nav.about') }}</p>
@@ -42,7 +42,7 @@
 {#- ================= SERVICES — three statements, the map changes with each ================= -#}
 <div id="services">
   {%- for s in svcs %}
-  <section class="sec say say-svc" data-map="{{ s.key }}"{% if s.key == 'hydro' %} data-flood{% endif %} data-i="{{ loop.index0 }}" data-hdr="on-dark">
+  <section class="sec say say-svc" data-map="{{ s.key }}"{% if s.key == 'hydro' %} data-flood{% endif %} data-i="{{ loop.index0 }}" data-hdr="on-light">
     <div class="say-st">
       <div class="wrap say-in">
         <p class="say-k mono"><b>0{{ loop.index }}</b> / 0{{ svcs|length }} — {{ s.card }}</p>
@@ -56,7 +56,7 @@
 </div>
 
 {#- ================= PROJECTS — a camera flight over the real places, one card per marker ================= -#}
-<section class="sec pstory" id="projects" style="--n:{{ pins|length }}" data-map="overview" data-hdr="on-dark" data-pstory>
+<section class="sec pstory" id="projects" style="--n:{{ pins|length }}" data-map="overview" data-hdr="on-light" data-pstory>
   <div class="pstory-st">
     <div class="wrap pstory-in">
       <div class="pstory-head">
@@ -83,7 +83,7 @@
 </section>
 
 {#- ================= PLATFORMS ================= -#}
-<section class="sec hplat" id="platforms" data-map="plat" data-hdr="on-dark">
+<section class="sec hplat" id="platforms" data-map="plat" data-hdr="on-light">
   <div class="wrap">
     <div class="sh"><span class="sh-l mono"><b>03</b>{{ x('home.platforms') }}</span></div>
     <div class="plat-grid">
@@ -106,7 +106,7 @@
 </section>
 
 {#- ================= NUMBERS + PARTNERS ================= -#}
-<section class="sec hpart" id="partners" data-map="numbers" data-hdr="on-dark">
+<section class="sec hpart" id="partners" data-map="numbers" data-hdr="on-light">
   <div class="wrap">
     <div class="sh"><span class="sh-l mono"><b>04</b>{{ t('ui.about.partners') }}</span></div>
     <dl class="stats">

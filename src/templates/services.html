@@ -4,7 +4,7 @@
 {{ subnav(nav, x('home.overview')) }}
 
 {#- hero: the warm-palette map, a numbered index of the three services (after abatable.com / piergorelli.com) -#}
-<section class="sec shero" id="top" data-map="svcHero" data-hdr="on-dark">
+<section class="sec shero" id="top" data-map="svcHero" data-hdr="on-light">
   <div class="wrap shero-in">
     <p class="kicker mono"><i class="pulse"></i>{{ x('home.kicker') }}</p>
     <h1 class="mega shero-h" style="--n:{{ t('ui.nav.services')|length }}" data-split="fade" aria-label="{{ t('ui.h1.services') }}">{{ t('ui.nav.services') }}</h1>
@@ -18,7 +18,7 @@
 </section>
 
 {#- glass card with the interactive 3D layer stack -#}
-<section class="sec slayer" id="layers" data-map="svcLayers" data-hdr="on-dark">
+<section class="sec slayer" id="layers" data-map="svcLayers" data-hdr="on-light">
   <div class="wrap">
     <div class="slayer-card glass">
       <div class="slayer-copy">
@@ -37,7 +37,7 @@
 
 {#- three services as numbered chapters: the numeral stays on the map, the content sits in a glass panel -#}
 {%- for s in svcs %}
-<section class="sec sv" id="{{ s.key }}" data-chap data-map="svc{{ s.key|capitalize }}"{% if s.key == 'hydro' %} data-flood{% endif %} data-hdr="on-dark">
+<section class="sec sv" id="{{ s.key }}" data-chap data-map="svc{{ s.key|capitalize }}"{% if s.key == 'hydro' %} data-flood{% endif %} data-hdr="on-light">
   <div class="wrap sv-grid">
     <div class="sv-num" aria-hidden="true"><span class="sv-n">{{ '%02d' % loop.index }}</span><span class="sv-t">/{{ '%02d' % svcs|length }}</span></div>
     <div class="sv-main glass">

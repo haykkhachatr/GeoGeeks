@@ -21,9 +21,9 @@
     }
     var l = stops[stops.length - 1]; return [l[1], l[2], l[3]];
   }
-  // logo colours: teal #0c8495 (low) -> green #00a97a -> yellow #f7db5d (high), pale yellow on the peaks
-  var COOL = [[0, 0.047, 0.518, 0.584], [0.2, 0.047, 0.518, 0.584], [0.44, 0.0, 0.663, 0.478], [0.74, 0.969, 0.859, 0.365], [1, 1, 0.94, 0.68]];
-  var WARM = [[0, 0.0, 0.62, 0.45], [0.3, 0.36, 0.84, 0.46], [0.6, 0.97, 0.86, 0.36], [0.85, 1.0, 0.66, 0.30], [1, 1, 0.96, 0.85]];
+  // logo colours on a light page: teal #0c8495 (low) -> green #00a97a -> logo yellow, a touch deeper so it holds on cream, amber on the peaks
+  var COOL = [[0, 0.03, 0.43, 0.53], [0.2, 0.047, 0.518, 0.584], [0.44, 0.0, 0.663, 0.478], [0.74, 0.95, 0.79, 0.14], [1, 0.88, 0.62, 0.06]];
+  var WARM = [[0, 0.0, 0.58, 0.42], [0.3, 0.22, 0.70, 0.30], [0.6, 0.94, 0.78, 0.14], [0.85, 0.93, 0.56, 0.10], [1, 0.82, 0.38, 0.10]];
 
   var VERT = [
     'attribute vec3 aCol; attribute vec3 aCol2; attribute float aHand; attribute float aRiv; attribute float aSeed; attribute float aSz; attribute float aHot;',
@@ -43,13 +43,14 @@
     '  float fl = smoothstep(uFlood + 0.5, uFlood - 0.5, aHand) * step(0.01, uFlood);',
     '  vec3 col = mix(aCol, aCol2, uPal);',
     '  float lum = dot(col, vec3(0.30, 0.59, 0.11));',
-    '  col = mix(col, uTint * (0.3 + lum * 1.25), uTone);',
-    '  col = mix(col, vec3(0.16, 0.55, 0.98), fl);',
+    '  col = mix(col, uTint * (0.62 + lum * 0.55), uTone);',
+    '  col = mix(col, vec3(0.07, 0.38, 0.85), fl);',
     '  float isR = step(0.5, aRiv);',
-    '  col = mix(col, vec3(0.5, 0.96, 1.0), uRiver*isR);',
+    '  col = mix(col, vec3(0.0, 0.42, 0.58), uRiver*isR);',
     '  float alpha = mix(1.0, mix(0.07, 1.0, isR), uRiver);',
+    '  alpha *= mix(1.0, 0.3, step(90.0, aHand));',
     '  float hot = aHot * uHot;',
-    '  col = mix(col, vec3(1.0, 0.95, 0.7), hot*(0.55 + 0.45*sin(uTime*3.0)));',
+    '  col = mix(col, vec3(0.95, 0.62, 0.0), hot*(0.55 + 0.45*sin(uTime*3.0)));',
     '  float tw = 0.65 + 0.35*sin(uTime*1.3 + aSeed*50.0);',
     '  vCol = col; vA = alpha * tw * uDim * (0.25 + 0.75*m);',
     '  vec4 mv = modelViewMatrix * vec4(q, 1.0);',
@@ -95,7 +96,7 @@
       function put(k, u, v, cell, isR) {
         var hh = hAt(u, v), ins = pd[cell * 4 + 2] > 0;
         pos[k * 3] = (u - 0.5) * WORLD_W; pos[k * 3 + 1] = hh * HS; pos[k * 3 + 2] = (v - 0.5) * WORLD_D;
-        var el = G.e0 + hh * (G.e1 - G.e0), t = clamp((el - 350) / 3700, 0, 1), a = ramp(COOL, t), b = ramp(WARM, t), dim = ins ? 1 : 0.35;
+        var el = G.e0 + hh * (G.e1 - G.e0), t = clamp((el - 350) / 3700, 0, 1), a = ramp(COOL, t), b = ramp(WARM, t), dim = 1;
         c1[k * 3] = a[0] * dim; c1[k * 3 + 1] = a[1] * dim; c1[k * 3 + 2] = a[2] * dim;
         c2[k * 3] = b[0] * dim; c2[k * 3 + 1] = b[1] * dim; c2[k * 3 + 2] = b[2] * dim;
         var hb = ph[cell * 4 + 2] / 255; hand[k] = ins ? G.hand_max * hb * hb : 99;

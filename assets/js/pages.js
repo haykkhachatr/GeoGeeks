@@ -18,7 +18,7 @@
   var BASE = { cx: 0.6, cy: 6.3, cz: 9.6, tx: 0.2, ty: 0, tz: 0.4, fov: 30, morph: 1, river: 0, flood: 0, flat: 0, pal: 0, hot: 0, dim: 1, size: 2.4, spin: 1, par: 1, shiftX: 0, tone: 0, tr: 1, tg: 1, tb: 1, pins: 0 };
   var KEYS = Object.keys(BASE);
   function S(o) { return Object.assign({}, BASE, o); }
-  var CYAN = { tone: 0.88, tr: 0.34, tg: 0.88, tb: 0.98 }, BLUE = { tone: 0.86, tr: 0.42, tg: 0.62, tb: 1 }, GREEN = { tone: 0.8, tr: 0.3, tg: 0.95, tb: 0.68 };
+  var CYAN = { tone: 0.88, tr: 0.05, tg: 0.52, tb: 0.60 }, BLUE = { tone: 0.86, tr: 0.05, tg: 0.38, tb: 0.55 }, GREEN = { tone: 0.8, tr: 0.0, tg: 0.66, tb: 0.48 };
   var INTRO = S({ cx: 0, cy: 8.5, cz: 11, fov: 38, morph: 0, dim: 0.9 });
   var MAP = {
     // home (esri-style statements)
