@@ -21,7 +21,8 @@
     }
     var l = stops[stops.length - 1]; return [l[1], l[2], l[3]];
   }
-  var COOL = [[0, 0.05, 0.44, 0.56], [0.18, 0.18, 0.75, 0.83], [0.42, 0.0, 0.66, 0.48], [0.72, 0.97, 0.86, 0.36], [1, 1, 1, 1]];
+  // logo colours: teal #0c8495 (low) -> green #00a97a -> yellow #f7db5d (high), pale yellow on the peaks
+  var COOL = [[0, 0.047, 0.518, 0.584], [0.2, 0.047, 0.518, 0.584], [0.44, 0.0, 0.663, 0.478], [0.74, 0.969, 0.859, 0.365], [1, 1, 0.94, 0.68]];
   var WARM = [[0, 0.0, 0.62, 0.45], [0.3, 0.36, 0.84, 0.46], [0.6, 0.97, 0.86, 0.36], [0.85, 1.0, 0.66, 0.30], [1, 1, 0.96, 0.85]];
 
   var VERT = [
@@ -60,7 +61,7 @@
   var FRAG = [
     'precision mediump float; varying vec3 vCol; varying float vA;',
     'void main(){ vec2 d = gl_PointCoord - 0.5; float r = length(d); if (r > 0.5) discard;',
-    '  float a = smoothstep(0.5, 0.0, r); a = a*a*1.7; gl_FragColor = vec4(vCol, a*vA); }'
+    '  float a = smoothstep(0.5, 0.0, r); a = a*a*1.7; gl_FragColor = vec4(vCol, min(a*vA*1.9, 1.0)); }'
   ].join('\n');
 
   function create(canvas, opts) {
@@ -127,7 +128,7 @@
       g.setDrawRange(0, total);
       mat = new THREE.ShaderMaterial({
         uniforms: { uTime: { value: 0 }, uMorph: { value: 0 }, uRiver: { value: 0 }, uFlood: { value: 0 }, uFlat: { value: 0 }, uPx: { value: 400 }, uSize: { value: 2.3 }, uDim: { value: 1 }, uPal: { value: 0 }, uHot: { value: 0 }, uTone: { value: 0 }, uTint: { value: new THREE.Vector3(1, 1, 1) }, uMouse: { value: new THREE.Vector3(99, 0, 99) } },
-        vertexShader: VERT, fragmentShader: FRAG, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+        vertexShader: VERT, fragmentShader: FRAG, transparent: true, depthWrite: false, blending: THREE.NormalBlending
       });
       pts = new THREE.Points(g, mat); pts.frustumCulled = false; scene.add(pts);
       C.ok = true; resize();
