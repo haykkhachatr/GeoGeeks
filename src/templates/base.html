@@ -53,24 +53,13 @@ setTimeout(function(){if(!window.__ggReady){d.classList.add('pt-failsafe');}},90
     <span class="hdr-word">GeoGeeks</span>
   </a>
   <nav class="hdr-nav" aria-label="{{ x('menu') }}">
-    {%- for m in menu if m.key not in ('home', 'contact') %}
-    {%- if m.sub %}
-    <div class="dd" data-dd>
-      <a class="hdr-l{% if m.on %} is-on{% endif %}" href="{{ m.href }}"{% if m.on %} aria-current="page"{% endif %}>{{ m.label }}</a>
-      <button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-{{ m.key }}" aria-label="{{ m.label }}"><svg viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="dd-p" id="dd-{{ m.key }}"><ul class="dd-box">
-        {%- for s in m.sub %}<li><a class="dd-i" href="{{ s.href }}"><span class="dd-n mono">{{ '%02d' % loop.index }}</span><span class="dd-l">{{ s.label }}</span>{% if s.n != '' %}<span class="dd-c mono">{{ s.n }}</span>{% endif %}<span class="dd-ar" aria-hidden="true">{{ arrow() }}</span></a></li>{% endfor %}
-      </ul></div>
-    </div>
-    {%- else %}<a class="hdr-l{% if m.on %} is-on{% endif %}" href="{{ m.href }}"{% if m.on %} aria-current="page"{% endif %}>{{ m.label }}</a>{% endif %}
-    {%- endfor %}
+    {%- for m in menu if m.key != 'home' %}<a href="{{ m.href }}"{% if m.on %} class="is-on" aria-current="page"{% endif %}>{{ m.label }}</a>{% endfor -%}
   </nav>
   <div class="hdr-r">
     <nav class="lang" aria-label="{{ x('language') }}">
       {%- for l in langs %}<a class="lang-a{% if l.code == lang %} is-on{% endif %}" href="{{ l.href }}" hreflang="{{ l.code }}" lang="{{ l.code }}" data-lang="{{ l.code }}"{% if l.code == lang %} aria-current="true"{% endif %}>{{ l.label }}</a>{% endfor -%}
       <i class="lang-ind"></i>
     </nav>
-    {%- for m in menu if m.key == 'contact' %}<a class="hdr-cta{% if m.on %} is-on{% endif %}" href="{{ m.href }}"{% if m.on %} aria-current="page"{% endif %}><span>{{ m.label }}</span></a>{% endfor %}
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
       <span class="menu-btn-label"><span class="mb-a">{{ x('menu') }}</span><span class="mb-b" aria-hidden="true">{{ t('ui.services.close') }}</span></span>
       <span class="burger" aria-hidden="true"><i></i><i></i></span>

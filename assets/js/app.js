@@ -111,16 +111,7 @@
     var u; try { u = new URL(a.href, location.href); } catch (e) { return; }
     if (u.origin !== location.origin && location.protocol !== 'file:') return;
     if (location.protocol === 'file:' && u.protocol !== 'file:') return;
-    if (u.pathname === location.pathname && u.search === location.search) {
-      if (u.hash) {   // same page, other chapter: glide there instead of jumping
-        var tg = doc.getElementById(decodeURIComponent(u.hash.slice(1)));
-        if (!tg) return;
-        ev.preventDefault(); closeDropdowns();
-        App.scrollTo(tg.getBoundingClientRect().top + window.scrollY - 70, { duration: 1.4 });
-        return;
-      }
-      ev.preventDefault(); App.scrollTo(0); return;
-    }
+    if (u.pathname === location.pathname && u.search === location.search) { if (u.hash) return; ev.preventDefault(); App.scrollTo(0); return; }
     ev.preventDefault();
     if (a.hasAttribute('data-lang')) { try { localStorage.setItem('ggLang', a.getAttribute('data-lang')); } catch (e) { } }
     if (body.classList.contains('menu-open')) closeMenu(true);
@@ -140,29 +131,7 @@
     initPortal();
     initReveals();
     ST.refresh();
-    // arriving from another page's drop-down (services#hydro): put that chapter at the top
-    if (location.hash.length > 1) {
-      var tg = null; try { tg = doc.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) { }
-      if (tg) requestAnimationFrame(function () { App.scrollTo(tg.getBoundingClientRect().top + window.scrollY - 70, { immediate: true }); });
-    }
   };
-
-  /* ------------------------------------------------------------ header drop-downs (hover and keyboard work in CSS; this adds touch, Esc and click-away) */
-  var dds = $$('[data-dd]');
-  function closeDropdowns() {
-    dds.forEach(function (d) { d.classList.remove('is-open'); var t = $('.dd-t', d); if (t) t.setAttribute('aria-expanded', 'false'); });
-    var ae = doc.activeElement; if (ae && ae.closest && ae.closest('[data-dd]')) ae.blur();
-  }
-  dds.forEach(function (d) {
-    var t = $('.dd-t', d); if (!t) return;
-    t.addEventListener('click', function () {
-      var on = !d.classList.contains('is-open'); dds.forEach(function (o) { if (o !== d) { o.classList.remove('is-open'); var ot = $('.dd-t', o); if (ot) ot.setAttribute('aria-expanded', 'false'); } });
-      d.classList.toggle('is-open', on); t.setAttribute('aria-expanded', on ? 'true' : 'false');
-    });
-    d.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { d.classList.remove('is-open'); t.setAttribute('aria-expanded', 'false'); } });
-  });
-  doc.addEventListener('click', function (e) { if (dds.length && !(e.target.closest && e.target.closest('[data-dd]'))) closeDropdowns(); });
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dds.length) closeDropdowns(); });
 
   /* ------------------------------------------------------------ header: theme + solid-on-scroll */
   var hdr = $('[data-hdr-el]');

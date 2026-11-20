@@ -257,7 +257,7 @@ def render(lang, route, D, tpl, extra=None):
     for mk, label, img in MENU:
         r = (mk,)
         menu.append({'key': mk, 'label': T(label), 'href': href(*r), 'img': img, 'on': k == mk or (mk == 'projects' and k in ('sector', 'project')),
-                     'route': r, 'sub': []})
+                     'route': r})
     # language switch
     langs = [{'code': l, 'label': LANG_LABEL[l], 'href': rel_url(lang, cur, l, cur), 'abs': abs_url(l, cur) if SITE_URL else ''} for l in LANGS]
 
@@ -309,13 +309,6 @@ def render(lang, route, D, tpl, extra=None):
         p['href'] = link_for(p['route'])
     for p in D['pins']:
         p['href'] = link_for(p['route'])
-
-    # drop-down panels of the header: services jump to their chapter, projects list the sectors with their project counts
-    for m in menu:
-        if m['key'] == 'services':
-            m['sub'] = [{'label': s['card'], 'href': m['href'] + '#' + s['key'], 'n': ''} for s in D['svcs']]
-        elif m['key'] == 'projects':
-            m['sub'] = [{'label': s['title'], 'href': s['href'], 'n': s['count']} for s in D['sectors']]
 
     js_strings = {
         'menu': T.x('menu'), 'close': T('ui.services.close'), 'openMenu': T('ui.nav.openMenu'), 'closeMenu': T('ui.nav.closeMenu'),
