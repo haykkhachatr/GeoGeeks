@@ -315,6 +315,7 @@ def render(lang, route, D, tpl, extra=None):
         'copied': T.x('copied'), 'copy': T.x('copy'), 'stage': T.x('stage'), 'all': T.x('all'), 'view': T('ui.projects.view'),
         'open': T.x('open'), 'mail': T.x('mailLabel'),
         'pins': {p['key']: p['label'] for p in D['pins']},
+        'fl': {'m': T.x('fl.m'), 'stops': [T.x('pin.sevan'), T.x('fl.hrazdan'), T.x('pin.yerevan')], 'peaks': {'aragats': T.x('fl.aragats'), 'ararat': T.x('fl.ararat')}},
         'layers': [T.x('view.relief'), T.x('layer.contours'), T.x('view.hydro'), D['flood']['title']],
     }
     page_data = None
@@ -332,7 +333,7 @@ def render(lang, route, D, tpl, extra=None):
         t=T, x=T.x, href=href, clean_urls=CLEAN, js_strings=js_strings, page_data=page_data,
         theme=THEME[k], theme_color=THEME_META[THEME[k]], hdr0=HDR0.get(k, 'on-light'), contours_svg=Markup(CONTOURS),
         use_three=True, use_geo=True,
-        extra_js=['cloud'] + {'services': ['layers'], 'tools': ['parcel']}.get(k, []), about_heading=about_heading, back_label=back_label,
+        extra_js=['cloud'] + {'services': ['layers', 'flight'], 'tools': ['parcel']}.get(k, []), about_heading=about_heading, back_label=back_label,
         client_label=client_label, hero_desc=hero_desc, tool_url=cfg['tool_url'], jsonld=None,
     )
     if k == 'home':

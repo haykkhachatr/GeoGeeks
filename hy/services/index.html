@@ -76,16 +76,65 @@ setTimeout(function(){if(!window.__ggReady){d.classList.add('pt-failsafe');}},90
   <main id="main" tabindex="-1">
 <nav class="subnav" aria-label="Ակնարկ" data-subnav><a href="#top" class="is-on">Ակնարկ</a><a href="#gis">ԱՏՀ վերլուծություն և հեռահար զոնդավորում</a><a href="#hydro">Ջրային ռեսուրսներ և հեղեղումների մոդելավորում</a><a href="#edu">GIS կրթություն</a>
   <i class="subnav-bar" data-subnav-bar></i>
-</nav><section class="sec shero" id="top" data-map="svcHero" data-hdr="on-light">
-  <div class="wrap shero-in">
-    <p class="kicker mono"><i class="pulse"></i>ԱՏՀ · Հիդրոլոգիա · Ջրհեղեղների մոդելավորում</p>
-    <h1 class="mega shero-h" style="--n:15" data-split="fade" aria-label="ԱՏՀ (GIS), հիդրոլոգիական և ջրհեղեղների մոդելավորման ծառայություններ">Ծառայություններ</h1>
-    <p class="shero-sub" data-fx="fade">ԱՏՀ (GIS), հիդրոլոգիական և ջրհեղեղների մոդելավորման ծառայություններ</p>
-    <ol class="shero-idx" data-fx="fade">
-      <li><a class="sidx" href="#gis"><span class="mono">01</span><b>ԱՏՀ վերլուծություն և հեռահար զոնդավորում</b><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a></li>
-      <li><a class="sidx" href="#hydro"><span class="mono">02</span><b>Ջրային ռեսուրսներ և հեղեղումների մոդելավորում</b><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a></li>
-      <li><a class="sidx" href="#edu"><span class="mono">03</span><b>GIS կրթություն</b><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a></li>
-    </ol>
+</nav>
+<section class="sec flight" id="top" data-flight data-map="svcHero" data-hdr="on-light">
+  <div class="flight-track">
+    <div class="flight-st">
+      <canvas class="flight-gl" data-fl-gl aria-hidden="true"></canvas>
+      <div class="fl-marks" data-fl-marks aria-hidden="true"></div>
+      <div class="wrap fl-copy">
+        <div class="fl-title" data-fl-title>
+          <p class="kicker mono"><i class="pulse"></i>ԱՏՀ · Հիդրոլոգիա · Ջրհեղեղների մոդելավորում</p>
+          <h1 class="mega shero-h" style="--n:15" data-split="fade" aria-label="ԱՏՀ (GIS), հիդրոլոգիական և ջրհեղեղների մոդելավորման ծառայություններ">Ծառայություններ</h1>
+          <p class="shero-sub" data-fx="fade">ԱՏՀ (GIS), հիդրոլոգիական և ջրհեղեղների մոդելավորման ծառայություններ</p>
+        </div>
+        <div class="fl-end" data-fl-end>
+          <ol class="shero-idx">
+            <li><a class="sidx" href="#gis"><span class="mono">01</span><b>ԱՏՀ վերլուծություն և հեռահար զոնդավորում</b><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a></li>
+            <li><a class="sidx" href="#hydro"><span class="mono">02</span><b>Ջրային ռեսուրսներ և հեղեղումների մոդելավորում</b><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a></li>
+            <li><a class="sidx" href="#edu"><span class="mono">03</span><b>GIS կրթություն</b><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a></li>
+          </ol>
+        </div>
+      </div>
+      <p class="fl-hint mono" data-fl-hint aria-hidden="true"><i></i>Ոլորեք՝ թռչելու համար</p>
+      <div class="fl-hud mono" data-fl-hud aria-hidden="true">
+        <p class="fl-hud-r"><i class="pin-dot"></i>Հրազդան գետ</p>
+        <dl>
+          <div><dt>Բարձրություն</dt><dd><b data-fl-alt>0</b> մ</dd></div>
+          <div><dt>Ճանապարհ</dt><dd><b data-fl-dist>0</b> կմ</dd></div>
+        </dl>
+      </div>
+      <div class="fl-prof" data-fl-prof aria-hidden="true">
+        <div class="fp-in">
+          <svg viewBox="0 0 800 80" preserveAspectRatio="none"><path class="fp-a"/><path class="fp-l"/></svg><i class="fp-tk" data-fp-st="0"><span>Սևան</span></i><i class="fp-tk" data-fp-st="1"><span>Հրազդանի հովիտ</span></i><i class="fp-tk" data-fp-st="2"><span>Երևան</span></i>
+          <i class="fp-dot"></i>
+          <span class="fp-lo" data-fp-lo></span><span class="fp-hi" data-fp-hi></span>
+        </div>
+      </div>
+      <ol class="fl-cards">
+        <li class="fl-card" data-fl-card data-side="r">
+          <a class="fl-card-a glass" href="#hydro">
+            <p class="kicker mono"><b>01</b>Սևան · <span data-fl-el>—</span></p>
+            <h2 class="fl-card-h">Ջրային ռեսուրսներ և հեղեղումների մոդելավորում</h2>
+            <span class="fl-card-go"><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span>
+          </a>
+        </li>
+        <li class="fl-card" data-fl-card data-side="l">
+          <a class="fl-card-a glass" href="#gis">
+            <p class="kicker mono"><b>02</b>Հրազդանի հովիտ · <span data-fl-el>—</span></p>
+            <h2 class="fl-card-h">ԱՏՀ վերլուծություն և հեռահար զոնդավորում</h2>
+            <span class="fl-card-go"><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span>
+          </a>
+        </li>
+        <li class="fl-card" data-fl-card data-side="r">
+          <a class="fl-card-a glass" href="#edu">
+            <p class="kicker mono"><b>03</b>Երևան · <span data-fl-el>—</span></p>
+            <h2 class="fl-card-h">GIS կրթություն</h2>
+            <span class="fl-card-go"><svg class="arw" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span>
+          </a>
+        </li>
+      </ol>
+    </div>
   </div>
 </section><section class="sec slayer" id="layers" data-map="svcLayers" data-hdr="on-light">
   <div class="wrap">
@@ -244,7 +293,7 @@ setTimeout(function(){if(!window.__ggReady){d.classList.add('pt-failsafe');}},90
 
 <script>
 window.GG={lang:"hy",page:"services",root:"../../",clean:false,
- t:{"all": "\u0532\u0578\u056c\u0578\u0580\u0568", "close": "\u0553\u0561\u056f\u0565\u056c", "closeMenu": "\u0553\u0561\u056f\u0565\u056c \u0574\u0565\u0576\u0575\u0578\u0582\u0576", "copied": "\u054a\u0561\u057f\u0573\u0565\u0576\u057e\u0565\u0581", "copy": "\u054a\u0561\u057f\u0573\u0565\u0576\u0565\u056c", "layers": ["\u054c\u0565\u056c\u056b\u0565\u0586", "\u0540\u0578\u0580\u056b\u0566\u0578\u0576\u0561\u056f\u0561\u0576\u0576\u0565\u0580", "\u0540\u056b\u0564\u0580\u0578\u056c\u0578\u0563\u056b\u0561", "\u054b\u0580\u0570\u0565\u0572\u0565\u0572\u0576\u0565\u0580\u056b \u0574\u0578\u0564\u0565\u056c\u0561\u057e\u0578\u0580\u0578\u0582\u0574"], "mail": "\u0533\u0580\u0565\u056c", "menu": "\u0544\u0565\u0576\u0575\u0578\u0582", "open": "\u0532\u0561\u0581\u0565\u056c", "openMenu": "\u0532\u0561\u0581\u0565\u056c \u0574\u0565\u0576\u0575\u0578\u0582\u0576", "pins": {"anpp": "\u0540\u0531\u0537\u053f", "sevan": "\u054d\u0587\u0561\u0576", "stepanavan": "\u054d\u057f\u0565\u0583\u0561\u0576\u0561\u057e\u0561\u0576", "yerevan": "\u0535\u0580\u0587\u0561\u0576"}, "stage": "\u054b\u0580\u056b \u0574\u0561\u056f\u0561\u0580\u0564\u0561\u056f", "view": "\u0534\u056b\u057f\u0565\u056c"}};
+ t:{"all": "\u0532\u0578\u056c\u0578\u0580\u0568", "close": "\u0553\u0561\u056f\u0565\u056c", "closeMenu": "\u0553\u0561\u056f\u0565\u056c \u0574\u0565\u0576\u0575\u0578\u0582\u0576", "copied": "\u054a\u0561\u057f\u0573\u0565\u0576\u057e\u0565\u0581", "copy": "\u054a\u0561\u057f\u0573\u0565\u0576\u0565\u056c", "fl": {"m": "\u0574", "peaks": {"aragats": "\u0531\u0580\u0561\u0563\u0561\u056e", "ararat": "\u0531\u0580\u0561\u0580\u0561\u057f"}, "stops": ["\u054d\u0587\u0561\u0576", "\u0540\u0580\u0561\u0566\u0564\u0561\u0576\u056b \u0570\u0578\u057e\u056b\u057f", "\u0535\u0580\u0587\u0561\u0576"]}, "layers": ["\u054c\u0565\u056c\u056b\u0565\u0586", "\u0540\u0578\u0580\u056b\u0566\u0578\u0576\u0561\u056f\u0561\u0576\u0576\u0565\u0580", "\u0540\u056b\u0564\u0580\u0578\u056c\u0578\u0563\u056b\u0561", "\u054b\u0580\u0570\u0565\u0572\u0565\u0572\u0576\u0565\u0580\u056b \u0574\u0578\u0564\u0565\u056c\u0561\u057e\u0578\u0580\u0578\u0582\u0574"], "mail": "\u0533\u0580\u0565\u056c", "menu": "\u0544\u0565\u0576\u0575\u0578\u0582", "open": "\u0532\u0561\u0581\u0565\u056c", "openMenu": "\u0532\u0561\u0581\u0565\u056c \u0574\u0565\u0576\u0575\u0578\u0582\u0576", "pins": {"anpp": "\u0540\u0531\u0537\u053f", "sevan": "\u054d\u0587\u0561\u0576", "stepanavan": "\u054d\u057f\u0565\u0583\u0561\u0576\u0561\u057e\u0561\u0576", "yerevan": "\u0535\u0580\u0587\u0561\u0576"}, "stage": "\u054b\u0580\u056b \u0574\u0561\u056f\u0561\u0580\u0564\u0561\u056f", "view": "\u0534\u056b\u057f\u0565\u056c"}};
 </script>
 <script src="../../assets/vendor/gsap.min.js"></script>
 <script src="../../assets/vendor/ScrollTrigger.min.js"></script>
@@ -254,6 +303,7 @@ window.GG={lang:"hy",page:"services",root:"../../",clean:false,
 <script src="../../assets/js/terrain.js"></script>
 <script src="../../assets/js/cloud.js"></script>
 <script src="../../assets/js/layers.js"></script>
+<script src="../../assets/js/flight.js"></script>
 <script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/pages.js"></script>
 </body>

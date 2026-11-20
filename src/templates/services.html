@@ -3,17 +3,57 @@
 {%- set nav = [('top', x('home.overview'))] %}{% for s in svcs %}{% set _ = nav.append((s.key, s.card)) %}{% endfor %}
 {{ subnav(nav, x('home.overview')) }}
 
-{#- hero: the warm-palette map, a numbered index of the three services (after abatable.com / piergorelli.com) -#}
-<section class="sec shero" id="top" data-map="svcHero" data-hdr="on-light">
-  <div class="wrap shero-in">
-    <p class="kicker mono"><i class="pulse"></i>{{ x('home.kicker') }}</p>
-    <h1 class="mega shero-h" style="--n:{{ t('ui.nav.services')|length }}" data-split="fade" aria-label="{{ t('ui.h1.services') }}">{{ t('ui.nav.services') }}</h1>
-    <p class="shero-sub" data-fx="fade">{{ t('ui.h1.services') }}</p>
-    <ol class="shero-idx" data-fx="fade">
-      {%- for s in svcs %}
-      <li><a class="sidx" href="#{{ s.key }}"><span class="mono">{{ '%02d' % loop.index }}</span><b>{{ s.card }}</b>{{ arrow() }}</a></li>
-      {%- endfor %}
-    </ol>
+{#- opening: a scroll-driven flight over the real relief. The camera follows the Hrazdan from Lake Sevan to Yerevan; each stop is one service.
+    Without JS / WebGL / with reduced motion the same markup is a plain hero (title + the index of the three services). -#}
+{%- set by = {} %}{% for s in svcs %}{% set _ = by.update({s.key: s}) %}{% endfor %}
+{%- set stops = [(x('pin.sevan'), by['hydro']), (x('fl.hrazdan'), by['gis']), (x('pin.yerevan'), by['edu'])] %}
+<section class="sec flight" id="top" data-flight data-map="svcHero" data-hdr="on-light">
+  <div class="flight-track">
+    <div class="flight-st">
+      <canvas class="flight-gl" data-fl-gl aria-hidden="true"></canvas>
+      <div class="fl-marks" data-fl-marks aria-hidden="true"></div>
+      <div class="wrap fl-copy">
+        <div class="fl-title" data-fl-title>
+          <p class="kicker mono"><i class="pulse"></i>{{ x('home.kicker') }}</p>
+          <h1 class="mega shero-h" style="--n:{{ t('ui.nav.services')|length }}" data-split="fade" aria-label="{{ t('ui.h1.services') }}">{{ t('ui.nav.services') }}</h1>
+          <p class="shero-sub" data-fx="fade">{{ t('ui.h1.services') }}</p>
+        </div>
+        <div class="fl-end" data-fl-end>
+          <ol class="shero-idx">
+            {%- for s in svcs %}
+            <li><a class="sidx" href="#{{ s.key }}"><span class="mono">{{ '%02d' % loop.index }}</span><b>{{ s.card }}</b>{{ arrow() }}</a></li>
+            {%- endfor %}
+          </ol>
+        </div>
+      </div>
+      <p class="fl-hint mono" data-fl-hint aria-hidden="true"><i></i>{{ x('fl.hint') }}</p>
+      <div class="fl-hud mono" data-fl-hud aria-hidden="true">
+        <p class="fl-hud-r"><i class="pin-dot"></i>{{ x('fl.route') }}</p>
+        <dl>
+          <div><dt>{{ x('fl.alt') }}</dt><dd><b data-fl-alt>0</b> {{ x('fl.m') }}</dd></div>
+          <div><dt>{{ x('fl.dist') }}</dt><dd><b data-fl-dist>0</b> {{ x('fl.km') }}</dd></div>
+        </dl>
+      </div>
+      <div class="fl-prof" data-fl-prof aria-hidden="true">
+        <div class="fp-in">
+          <svg viewBox="0 0 800 80" preserveAspectRatio="none"><path class="fp-a"/><path class="fp-l"/></svg>
+          {%- for st in stops %}<i class="fp-tk" data-fp-st="{{ loop.index0 }}"><span>{{ st[0] }}</span></i>{% endfor %}
+          <i class="fp-dot"></i>
+          <span class="fp-lo" data-fp-lo></span><span class="fp-hi" data-fp-hi></span>
+        </div>
+      </div>
+      <ol class="fl-cards">
+        {%- for st in stops %}
+        <li class="fl-card" data-fl-card data-side="{{ 'r' if loop.index0 != 1 else 'l' }}">
+          <a class="fl-card-a glass" href="#{{ st[1].key }}">
+            <p class="kicker mono"><b>{{ '%02d' % (loop.index) }}</b>{{ st[0] }} · <span data-fl-el>—</span></p>
+            <h2 class="fl-card-h">{{ st[1].card }}</h2>
+            <span class="fl-card-go">{{ arrow() }}</span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ol>
+    </div>
   </div>
 </section>
 
