@@ -250,22 +250,8 @@
   /* ================================================================ SERVICES */
   function servicesPage() {
     startMap();
-    // the opening flight (flight.js): decided up front so the loader waits for the scene and the page opens on it
-    var fl = $('[data-flight]'), F = null, FT = tt.fl || {};
-    if (fl && !RM && window.GGFlight) {
-      fl.classList.add('is-live');
-      try { F = window.GGFlight.create(fl, { lang: GG.lang, unitM: FT.m, stops: FT.stops, peaks: FT.peaks }); } catch (e) { F = null; }
-      if (F) {
-        App.pageReady(F.ready.then(function (ok) { if (!ok) throw new Error('flight'); }).catch(function () { fl.classList.remove('is-live'); if (F) F.dispose(); F = null; }));
-      } else fl.classList.remove('is-live');
-    }
     App.whenShown(function () {
       subnav();
-      if (F) {
-        var ft = ST.create({ trigger: '.flight-track', start: 'top top', end: 'bottom bottom', onUpdate: function (self) { F.setProgress(self.progress); } });
-        ST.create({ trigger: '.flight', start: 'top bottom', end: 'bottom top', onToggle: function (s) { F.setActive(s.isActive); } });
-        F.jump(ft.progress);
-      }
       var cv = $('#gl2');
       if (cv && window.GGLayers) {
         var L = window.GGLayers.create(cv, { labels: tt.layers || [], labelBox: $('[data-lyr-labels]') });
@@ -280,7 +266,7 @@
       }
       $$('[data-chap]').forEach(initTabs);
       var cta = $('[data-sticky-cta]');
-      if (cta) ST.create({ trigger: '.flight', start: 'bottom 60%', onToggle: function (s) { cta.classList.toggle('is-in', !s.isActive); } });
+      if (cta) ST.create({ trigger: '.shero', start: 'bottom 60%', onToggle: function (s) { cta.classList.toggle('is-in', !s.isActive); } });
     });
   }
   function initTabs(root_) {
